@@ -1,3 +1,9 @@
+#
+#
+# ONLY WORKS ON ARCH-BASED DISTRIBUTIONS (curently)
+#
+#
+
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
@@ -17,11 +23,67 @@ autoload -Uz +X compinit && compinit
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 zstyle ':completion:*' menu select
 
+install_zshautosuggestions() {
+  git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
+  source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+}
+
+install_zoxide() {
+  sudo pacman -S --noconfirm zoxide
+  eval "$(zoxide init zsh)"
+}
+
+install_spicetify() {
+  sudo pacman -S --noconfirm spicetify-cli
+  export PATH=$PATH:$HOME/.spicetify
+}
+
 # Rust env
-. "$HOME/.cargo/env"
+[ -d $HOME/.cargo ] && source "$HOME/.cargo/env"
+
+# asdf-vm
+[ -f /opt/asdf-vm/asdf.sh ] && source /opt/asdf-vm/asdf.sh
 
 # Init oh-my-posh
-eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/config.toml)"
+[ -f /usr/local/bin/oh-my-posh ] && eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/config.toml)"
 
-# Autosuggestions
-. ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+# Autosuggestions - https://github.com/zsh-users/zsh-autosuggestions
+if [[ ! -d ~/.zsh/zsh-autosuggestions ]]; then
+  echo "zsh-autosuggestions is not installed. Install it? [y/n]: "
+  read -r ans
+
+  if [[ "$ans" == "y" ]]; then
+    install_zshautosuggestions
+  fi
+else
+  source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+fi
+
+# NOT TESTED
+# pacman -Q spicetify-cli &>/dev/null
+# if [[ "$?" -eq 1 ]]; then
+#   echo "spicetify is not installed. Install it? [y/n]: "
+#   read -r ans
+
+#   if [[ "$ans" == "y" ]]; then
+#     install_spicetify
+#   fi
+# else
+#   export PATH=$PATH:$HOME/.spicetify
+# fi
+
+# Init spicetify-cli if it is installed
+export PATH=$PATH:$HOME/.spicetify
+
+# Init zoxide if it is installed
+pacman -Q zoxide &>/dev/null
+if [[ "$?" -eq 1 ]]; then
+  echo "zoxide is not installed. Install it? [y/n]: "
+  read -r ans
+
+  if [[ "$ans" == "y" ]]; then
+    install_zoxide
+  fi
+else
+  eval "$(zoxide init zsh)"
+fi
