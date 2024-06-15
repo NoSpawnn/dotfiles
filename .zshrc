@@ -17,11 +17,15 @@ SAVEHIST=10000
 setopt histignorealldups
 setopt SHARE_HISTORY
 
+# Autocompletion
 autoload -Uz +X compinit && compinit
 
 # Case-insensitive path-completion
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 zstyle ':completion:*' menu select
+
+bindkey "^[[A" history-search-backward
+bindkey "^[[B" history-search-forward
 
 install_zshautosuggestions() {
   git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
