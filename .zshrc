@@ -9,6 +9,7 @@
 
 alias ls="ls --color=auto"
 alias grep='grep --color=auto'
+[ -f /usr/bin/bat ] && alias cat="bat"
 
 HISTFILE=~/.zhistory
 HISTSIZE=10000
