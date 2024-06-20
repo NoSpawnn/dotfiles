@@ -10,6 +10,7 @@
 alias ls="ls --color=auto"
 alias grep='grep --color=auto'
 [ -f /usr/bin/bat ] && alias cat="bat"
+[ -f /usr/bin/eza ] && alias ls="eza -al"
 
 HISTFILE=~/.zhistory
 HISTSIZE=10000
