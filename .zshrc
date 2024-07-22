@@ -29,6 +29,8 @@ zstyle ':completion:*' menu select
 bindkey "^[[A" history-search-backward
 bindkey "^[[B" history-search-forward
 
+export PATH=$PATH:$HOME/.local/bin
+
 install_zshautosuggestions() {
   git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
   source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -51,7 +53,9 @@ install_spicetify() {
 [ -f /opt/asdf-vm/asdf.sh ] && source /opt/asdf-vm/asdf.sh
 
 # Init oh-my-posh
-[ -f /usr/local/bin/oh-my-posh ] && eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/config.toml)"
+if command -v oh-my-posh &> /dev/null; then
+    eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/config.toml)"
+fi
 
 # Autosuggestions - https://github.com/zsh-users/zsh-autosuggestions
 if [[ ! -d ~/.zsh/zsh-autosuggestions ]]; then
