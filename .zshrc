@@ -84,3 +84,5 @@ if ! command -v zoxide &> /dev/null; then
 else
   eval "$(zoxide init zsh)"
 fi
+
+export PATH=$PATH:/home/adam/.spicetify
