@@ -21,19 +21,19 @@ console_title_template = '{{ .Shell }} in {{ .Folder }}'
 
   [[blocks.segments]]
     type = 'git'
-    style = 'plain'   
+    style = 'plain'
 
 [[blocks]]
-  type = 'prompt' 
+  type = 'prompt'
   alignment = 'left'
   newline = true
 
   [[blocks.segments]]
-    type = 'text'  
+    type = 'text'
     style = 'plain'
     foreground_templates = [
       '{{ if gt .Code 0 }}p:red{{ end }}',
-      '{{ if eq .Code 0 }}p:text{{ else }}',             
+      '{{ if eq .Code 0 }}p:text{{ else }}',
     ]
     template = '❯'
 
@@ -56,7 +56,7 @@ console_title_template = '{{ .Shell }} in {{ .Folder }}'
     '{{ if gt .Code 0 }}p:red{{ end }}',
     '{{ if eq .Code 0 }}p:text{{ else }}',
   ]
-  newline = true
+  newline = false
   template = '❯ '
 
 [palette]
