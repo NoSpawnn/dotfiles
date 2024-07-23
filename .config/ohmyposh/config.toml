@@ -46,9 +46,9 @@ console_title_template = '{{ .Shell }} in {{ .Folder }}'
     style = 'plain'
     foreground = 'p:text'
 
-  [[blocks.segments]]
-    type = 'os'
-    style = 'plain'
+  # [[blocks.segments]]
+  #   type = 'os'
+  #   style = 'plain'
 
 
 [transient_prompt]
