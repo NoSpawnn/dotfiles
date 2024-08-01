@@ -3,7 +3,7 @@
 [window]
 startup_mode = "Maximized"
 padding = { x = 15, y = 5 }
-opacity = 0.75
+opacity = 0.85
 
 [font]
 size = 14
