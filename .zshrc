@@ -50,10 +50,6 @@ zstyle ':completion:*' menu select
 
 ### Exports ###
 export PATH=$PATH:$HOME/.local/bin
-[ -d $HOME/.spicetify ] && export PATH=$PATH:$HOME/.spicetify # Init spicetify-cli if it is installed
-if command -v zed &> /dev/null; then
-    export EDITOR="zed --wait" # Set editor to Zed if it is installed
-fi
 
 ### Envs ###
 [ -d $HOME/.cargo ] && source "$HOME/.cargo/env" # Rust
