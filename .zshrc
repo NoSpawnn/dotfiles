@@ -84,7 +84,7 @@ else
   eval "$(zoxide init zsh)"
 fi
 
-# Init zoxide if it is installed
+# Init asdf if it is installed
 if ! command -v asdf &> /dev/null; then
   echo "asdf-vm is not installed. Install it? [y/N]: "
   read -r ans
