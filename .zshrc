@@ -26,6 +26,7 @@ install_spicetify() {
 install_asdf() {
   git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.14.1
   source "$HOME/.asdf/asdf.sh"
+  fpath=(${ASDF_DIR}/completions $fpath)
 }
 
 ### Aliases ###
@@ -42,7 +43,6 @@ setopt histignorealldups
 setopt SHARE_HISTORY
 bindkey "^[[A" history-search-backward
 bindkey "^[[B" history-search-forward
-
 
 ### Case-insensitive path-completion ###
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
@@ -94,6 +94,7 @@ if ! command -v asdf &> /dev/null; then
   fi
 else
   source "$HOME/.asdf/asdf.sh"
+  fpath=(${ASDF_DIR}/completions $fpath)
 fi
 
 export PATH=$PATH:/home/adam/.spicetify
