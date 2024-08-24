@@ -23,6 +23,11 @@ install_spicetify() {
   export PATH=$PATH:$HOME/.spicetify
 }
 
+install_asdf() {
+  git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.14.1
+  source "$HOME/.asdf/asdf.sh"
+}
+
 ### Aliases ###
 alias ls="ls --color=auto"
 alias grep='grep --color=auto'
@@ -38,8 +43,6 @@ setopt SHARE_HISTORY
 bindkey "^[[A" history-search-backward
 bindkey "^[[B" history-search-forward
 
-### Autocompletion ###
-autoload -Uz +X compinit && compinit
 
 ### Case-insensitive path-completion ###
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
@@ -54,7 +57,7 @@ fi
 
 ### Envs ###
 [ -d $HOME/.cargo ] && source "$HOME/.cargo/env" # Rust
-[ -f /opt/asdf-vm/asdf.sh ] && source /opt/asdf-vm/asdf.sh # asdf
+[ -f $HOME/.asdf/asdf.sh ] && source "$HOME/.asdf/asdf.sh" # asdf
 
 # Init oh-my-posh
 if command -v oh-my-posh &> /dev/null; then
@@ -63,7 +66,7 @@ fi
 
 # Autosuggestions - https://github.com/zsh-users/zsh-autosuggestions
 if [[ ! -d ~/.zsh/zsh-autosuggestions ]]; then
-  echo "zsh-autosuggestions is not installed. Install it? [y/n]: "
+  echo "zsh-autosuggestions is not installed. Install it? [y/N]: "
   read -r ans
 
   if [[ "$ans" == "y" ]]; then
@@ -75,7 +78,7 @@ fi
 
 # Init zoxide if it is installed
 if ! command -v zoxide &> /dev/null; then
-  echo "zoxide is not installed. Install it? [y/n]: "
+  echo "zoxide is not installed. Install it? [y/N]: "
   read -r ans
 
   if [[ "$ans" == "y" ]]; then
@@ -85,4 +88,19 @@ else
   eval "$(zoxide init zsh)"
 fi
 
+# Init zoxide if it is installed
+if ! command -v asdf &> /dev/null; then
+  echo "asdf-vm is not installed. Install it? [y/N]: "
+  read -r ans
+
+  if [[ "$ans" == "y" ]]; then
+    install_asdf
+  fi
+else
+  source "$HOME/.asdf/asdf.sh"
+fi
+
 export PATH=$PATH:/home/adam/.spicetify
+
+### Autocompletion ###
+autoload -Uz +X compinit && compinit
