@@ -7,28 +7,6 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-### Install functions ###
-install_zshautosuggestions() {
-  git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
-  source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-}
-
-install_zoxide() {
-  sudo pacman -S --noconfirm zoxide
-  eval "$(zoxide init zsh)"
-}
-
-install_spicetify() {
-  sudo pacman -S --noconfirm spicetify-cli
-  export PATH=$PATH:$HOME/.spicetify
-}
-
-install_asdf() {
-  git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.14.1
-  source "$HOME/.asdf/asdf.sh"
-  fpath=(${ASDF_DIR}/completions $fpath)
-}
-
 ### Aliases ###
 alias ls="ls --color=auto"
 alias grep='grep --color=auto'
@@ -61,43 +39,19 @@ if command -v oh-my-posh &> /dev/null; then
 fi
 
 # Autosuggestions - https://github.com/zsh-users/zsh-autosuggestions
-if [[ ! -d ~/.zsh/zsh-autosuggestions ]]; then
-  echo "zsh-autosuggestions is not installed. Install it? [y/N]: "
-  read -r ans
-
-  if [[ "$ans" == "y" ]]; then
-    install_zshautosuggestions
-  fi
-else
+if [[ -d ~/.zsh/zsh-autosuggestions ]]; then
   source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 fi
 
 # Init zoxide if it is installed
-if ! command -v zoxide &> /dev/null; then
-  echo "zoxide is not installed. Install it? [y/N]: "
-  read -r ans
-
-  if [[ "$ans" == "y" ]]; then
-    install_zoxide
-  fi
-else
+if command -v zoxide &> /dev/null; then
   eval "$(zoxide init zsh)"
 fi
 
 # Init asdf if it is installed
-if ! command -v asdf &> /dev/null; then
-  echo "asdf-vm is not installed. Install it? [y/N]: "
-  read -r ans
-
-  if [[ "$ans" == "y" ]]; then
-    install_asdf
-  fi
-else
-  source "$HOME/.asdf/asdf.sh"
+if command -v asdf &> /dev/null; then
   fpath=(${ASDF_DIR}/completions $fpath)
 fi
-
-export PATH=$PATH:/home/adam/.spicetify
 
 ### Autocompletion ###
 autoload -Uz +X compinit && compinit
