@@ -1,17 +1,11 @@
-#
-#
-# ONLY WORKS ON ARCH-BASED DISTRIBUTIONS (curently)
-#
-#
-
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
 ### Aliases ###
 alias ls="ls --color=auto"
 alias grep='grep --color=auto'
-[ -f /usr/bin/bat ] && alias cat="bat"
-[ -f /usr/bin/eza ] && alias ls="eza -al"
+if command -v bat &> /dev/null; then alias cat="bat"; fi
+if command -v eza &> /dev/null; then alias ls="eza -al"; fi
 
 ### History ###
 HISTFILE=~/.zhistory
@@ -30,7 +24,7 @@ zstyle ':completion:*' menu select
 export PATH=$PATH:$HOME/.local/bin
 
 ### Envs ###
-[ -d $HOME/.cargo ] && source "$HOME/.cargo/env" # Rust
+[ -f $HOME/.cargo/env ] && source "$HOME/.cargo/env" # Rust
 [ -f $HOME/.asdf/asdf.sh ] && source "$HOME/.asdf/asdf.sh" # asdf
 
 # Init oh-my-posh
@@ -39,8 +33,8 @@ if command -v oh-my-posh &> /dev/null; then
 fi
 
 # Autosuggestions - https://github.com/zsh-users/zsh-autosuggestions
-if [[ -d ~/.zsh/zsh-autosuggestions ]]; then
-  source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+if [[ -d ./zsh-autosuggestions ]]; then
+  source ./zsh-autosuggestions/zsh-autosuggestions.zsh
 fi
 
 # Init zoxide if it is installed

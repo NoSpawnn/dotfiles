@@ -1,8 +1,16 @@
-#:schema https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json
-
-version = 2
-final_space = true
 console_title_template = '{{ .Shell }} in {{ .Folder }}'
+version = 3
+final_space = true
+
+[palette]
+  green = '#a6da95'
+  red = '#ed8796'
+  sapphire = '#7dc4e4'
+  text = '#cad3f5'
+
+[transient_prompt]
+  template = '❯ '
+  foreground_templates = ['{{ if gt .Code 0 }}p:red{{ end }}', '{{ if eq .Code 0 }}p:text{{ else }}']
 
 [[blocks]]
   type = 'prompt'
@@ -10,12 +18,13 @@ console_title_template = '{{ .Shell }} in {{ .Folder }}'
   newline = true
 
   [[blocks.segments]]
+    foreground = 'p:text'
+    background = 'transparent'
     type = 'path'
     style = 'plain'
-    background = 'transparent'
-    foreground = 'p:text'
 
     [blocks.segments.properties]
+      cache_duration = 'none'
       style = 'full'
       template = '{{ .Path }}'
 
@@ -23,44 +32,31 @@ console_title_template = '{{ .Shell }} in {{ .Folder }}'
     type = 'git'
     style = 'plain'
 
+    [blocks.segments.properties]
+      cache_duration = 'none'
+
 [[blocks]]
   type = 'prompt'
   alignment = 'left'
   newline = true
 
   [[blocks.segments]]
+    template = '❯'
     type = 'text'
     style = 'plain'
-    foreground_templates = [
-      '{{ if gt .Code 0 }}p:red{{ end }}',
-      '{{ if eq .Code 0 }}p:text{{ else }}',
-    ]
-    template = '❯'
+    foreground_templates = ['{{ if gt .Code 0 }}p:red{{ end }}', '{{ if eq .Code 0 }}p:text{{ else }}']
+
+    [blocks.segments.properties]
+      cache_duration = 'none'
 
 [[blocks]]
   type = 'rprompt'
   alignment = 'right'
 
   [[blocks.segments]]
+    foreground = 'p:text'
     type = 'time'
     style = 'plain'
-    foreground = 'p:text'
 
-  # [[blocks.segments]]
-  #   type = 'os'
-  #   style = 'plain'
-
-
-[transient_prompt]
-  foreground_templates = [
-    '{{ if gt .Code 0 }}p:red{{ end }}',
-    '{{ if eq .Code 0 }}p:text{{ else }}',
-  ]
-  newline = false
-  template = '❯ '
-
-[palette]
-  text = '#cad3f5'
-  sapphire = '#7dc4e4'
-  red = '#ed8796'
-  green = '#a6da95'
+    [blocks.segments.properties]
+      cache_duration = 'none'
