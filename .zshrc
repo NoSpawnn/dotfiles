@@ -2,7 +2,7 @@
 [[ $- != *i* ]] && return
 
 ### Aliases ###
-alias ls="ls --color=auto"
+alias ls="ls -a --color=auto"
 alias grep='grep --color=auto'
 if command -v bat &> /dev/null; then alias cat="bat"; fi
 if command -v eza &> /dev/null; then alias ls="eza -al"; fi
@@ -35,6 +35,8 @@ fi
 # Autosuggestions - https://github.com/zsh-users/zsh-autosuggestions
 if [[ -d ./zsh-autosuggestions ]]; then
   source ./zsh-autosuggestions/zsh-autosuggestions.zsh
+elif [[ -d /usr/share/zsh-autosuggestions ]]; then
+  source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 fi
 
 # Init zoxide if it is installed
