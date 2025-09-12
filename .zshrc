@@ -2,10 +2,11 @@
 [[ $- != *i* ]] && return
 
 ### Aliases ###
+alias grep="grep --color=auto"
 alias ls="ls -a --color=auto"
-alias grep='grep --color=auto'
 if command -v bat &> /dev/null; then alias cat="bat"; fi
 if command -v eza &> /dev/null; then alias ls="eza -al"; fi
+alias vim="nvim"
 
 ### History ###
 HISTFILE=~/.zhistory
