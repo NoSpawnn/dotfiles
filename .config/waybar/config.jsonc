@@ -14,5 +14,8 @@
     },
     "network": {
 	"format": "{signalStrength}%"
+    },
+    "tray": {
+	"spacing": 10	
     }
 }
