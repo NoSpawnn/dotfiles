@@ -35,9 +35,7 @@ if command -v oh-my-posh &> /dev/null; then
 fi
 
 # Autosuggestions - https://github.com/zsh-users/zsh-autosuggestions
-if [[ -d ./zsh-autosuggestions ]]; then
-  source ./zsh-autosuggestions/zsh-autosuggestions.zsh
-elif [[ -d /usr/share/zsh/plugins/zsh-autosuggestions ]]; then
+if [[ -d /usr/share/zsh/plugins/zsh-autosuggestions ]]; then
   source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 fi
 
