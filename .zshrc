@@ -6,7 +6,8 @@ alias grep="grep --color=auto"
 alias ls="ls -a --color=auto"
 if command -v bat &> /dev/null; then alias cat="bat"; fi
 if command -v eza &> /dev/null; then alias ls="eza -al"; fi
-alias vim="nvim"
+if command -v nvim &> /dev/null; then alias vim="nvim"; fi
+flatpak list --user --app | grep -q "dev.zed.Zed" && alias zed="flatpak run --user dev.zed.Zed"
 
 ### History ###
 HISTFILE=~/.zhistory
