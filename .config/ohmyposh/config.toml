@@ -49,14 +49,14 @@ final_space = true
     [blocks.segments.properties]
       cache_duration = 'none'
 
-[[blocks]]
-  type = 'rprompt'
-  alignment = 'right'
+# [[blocks]]
+#   type = 'rprompt'
+#   alignment = 'right'
 
-  [[blocks.segments]]
-    foreground = 'p:text'
-    type = 'time'
-    style = 'plain'
+#   [[blocks.segments]]
+#     foreground = 'p:text'
+#     type = 'time'
+#     style = 'plain'
 
-    [blocks.segments.properties]
-      cache_duration = 'none'
+#     [blocks.segments.properties]
+#       cache_duration = 'none'
