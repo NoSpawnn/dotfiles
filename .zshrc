@@ -9,6 +9,9 @@ if command -v eza &> /dev/null; then alias ls="eza -al"; fi
 if command -v nvim &> /dev/null; then alias vim="nvim"; fi
 flatpak list --user --app | grep -q "dev.zed.Zed" && alias zed="flatpak run --user dev.zed.Zed"
 
+### Binds ###
+bindkey "^[[3~" delete-char
+
 ### History ###
 HISTFILE=~/.zhistory
 HISTSIZE=10000
