@@ -11,6 +11,8 @@ flatpak list --user --app | grep -q "dev.zed.Zed" && alias zed="flatpak run --us
 
 ### Binds ###
 bindkey "^[[3~" delete-char
+bindkey "^[[1;5D" backward-word
+bindkey "^[[1;5C" forward-word
 
 ### History ###
 HISTFILE=~/.zhistory
