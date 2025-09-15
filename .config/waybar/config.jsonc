@@ -1,17 +1,33 @@
 // https://github.com/Alexays/Waybar/wiki
 {
   "layer": "bottom",
+  "margin": "10 10 0 10",
   "modules-left": ["hyprland/workspaces"],
   "modules-center": ["hyprland/window"],
-  "modules-right": ["tray", "network", "clock"],
+  "modules-right": ["tray", "bluetooth", "network", "clock"],
   "hyprland/window": {
     "max-length": 50,
     "separate-outputs": true,
   },
   "hyprland/workspaces": {
-    "format": "{name}",
+    "format": "{icon}",
+    "format-icons": {
+      "1": "󰖟",
+      "2": "󰻞",
+      "3": "",
+      "urgent": "",
+    },
+    "active-only": true,
     "on-scroll-up": "hyprctl dispatch workspace e+1",
     "on-scroll-down": "hyprctl dispatch workspace e-1",
+    "on-click": "activate",
+  },
+  "bluetooth": {
+    "format": "󰂯",
+    "format-disabled": "󰂲",
+    "format-off": "󰂲",
+    "format-on": "󰂰",
+    "format-connected": "󰂱",
   },
   "network": {
     "format": " ",
@@ -24,6 +40,6 @@
   },
   "clock": {
     // "format": "{:%R - %d/%m/%y}",
-    "format": "{:%b %e %Y - %R}",
+    "format": "{:%b %e %Y %R}",
   },
 }
