@@ -10,6 +10,7 @@
     "separate-outputs": true,
     "rewrite": {
       "(.*) • (.*) — Zen Browser": "󰓇 $1 • $2", // Spotify in zen
+      "(.*) - YouTube — Zen Browser": "󰗃 $1",
       "(.*) - (.*) - Obsidian (.*)": "󰩪 $1",
     },
   },
