@@ -1,6 +1,9 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+### Opts ###
+setopt COMPLETE_ALIASES
+
 ### Aliases ###
 alias grep="grep --color=auto"
 alias ls="ls -a --color=auto"
