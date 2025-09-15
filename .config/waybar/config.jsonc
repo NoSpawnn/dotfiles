@@ -4,7 +4,7 @@
   "margin": "10 10 0 10",
   "modules-left": ["hyprland/workspaces"],
   "modules-center": ["hyprland/window"],
-  "modules-right": ["tray", "bluetooth", "network", "clock"],
+  "modules-right": ["bluetooth", "network", "clock"],
   "hyprland/window": {
     "format": "{title} | {class}",
 
