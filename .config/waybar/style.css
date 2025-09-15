@@ -35,10 +35,8 @@ button:hover {
 }
 
 #workspaces button {
-    color: transparent;
     padding: 0 2rem;
-    background-color: transparent;
-    color: #ffffff;
+    color: gray;
 }
 
 #workspaces:first-child button {
@@ -47,6 +45,10 @@ button:hover {
 
 #workspaces button.urgent {
     color: red;
+}
+
+#workspaces button.visible {
+    color: white;
 }
 
 #tray menu {
