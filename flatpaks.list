@@ -8,17 +8,11 @@ app/md.obsidian.Obsidian/x86_64/stable
 app/com.rtosta.zapzap/x86_64/stable
 app/org.kde.kdenlive/x86_64/stable
 app/io.github.pwr_solaar.solaar/x86_64/stable
-app/org.fkoehler.KTailctl/x86_64/stable
 app/com.bitwarden.desktop/x86_64/stable
 app/org.signal.Signal/x86_64/stable
-app/io.github.kolunmi.Bazaar/x86_64/stable
-
 app/dev.zed.Zed/x86_64/stable
 app/io.podman_desktop.PodmanDesktop/x86_64/stable
-app/io.github.getnf.embellish/x86_64/stable
-app/me.iepure.devtoolbox/x86_64/stable
 app/sh.loft.devpod/x86_64/stable
-
 app/com.obsproject.Studio/x86_64/stable
 app/dev.vencord.Vesktop/x86_64/stable
 app/chat.revolt.RevoltDesktop/x86_64/stable
@@ -27,3 +21,5 @@ app/io.github.Foldex.AdwSteamGtk/x86_64/stable
 app/net.davidotek.pupgui2/x86_64/stable
 app/com.github.Matoking.protontricks/x86_64/stable
 app/com.usebottles.bottles/x86_64/stable
+app/org.blender.Blender/x86_64/stable
+app/org.freecad.freeCAD/x86_64/stable
