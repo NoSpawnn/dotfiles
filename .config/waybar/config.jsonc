@@ -6,12 +6,17 @@
   "modules-center": ["hyprland/window"],
   "modules-right": ["tray", "bluetooth", "network", "clock"],
   "hyprland/window": {
+    "format": "{title} - {class}",
     "max-length": 50,
     "separate-outputs": true,
     "rewrite": {
-      "(.*) • (.*) — Zen Browser": "󰓇 $1 • $2", // Spotify in zen
-      "(.*) - YouTube — Zen Browser": "󰗃 $1",
-      "(.*) - (.*) - Obsidian (.*)": "󰩪 $1",
+      "(.*) - spotify": "󰓇 $1",
+      "(.*) - YouTube — Zen Browser - app.zen_browser.zen": "󰗃 $1",
+      "(.*) — Zen Browser - app.zen_browser.zen": "󰖟 $1",
+      "(.*) - (.*) - Obsidian (.*) - obsidian": "󰽛 $1",
+      "(.*) — (.*) - dev.zed.Zed": " $2 in $1",
+      "• Discord [|](.*)": " $1",
+      "(.*) - [a-z0-9][a-z0-9.-]*[a-z0-9]": "$1", // Rewrite everything else to not display the app ID
     },
   },
   "hyprland/workspaces": {
