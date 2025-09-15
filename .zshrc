@@ -27,6 +27,7 @@ zstyle ':completion:*' menu select
 
 ### Exports ###
 export PATH=$PATH:$HOME/.local/bin
+export EDITOR=vim
 export SSH_AUTH_SOCK=$HOME/.var/app/com.bitwarden.desktop/data/.bitwarden-ssh-agent.sock
 
 ### Envs ###
