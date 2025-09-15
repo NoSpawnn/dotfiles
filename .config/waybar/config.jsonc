@@ -8,6 +8,9 @@
   "hyprland/window": {
     "max-length": 50,
     "separate-outputs": true,
+    "rewrite": {
+      "(.*) • (.*) — Zen Browser": "󰓇 $1 • $2",
+    },
   },
   "hyprland/workspaces": {
     "format": "{icon}",
