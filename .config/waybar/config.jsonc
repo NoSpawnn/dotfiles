@@ -9,7 +9,7 @@
     "max-length": 50,
     "separate-outputs": true,
     "rewrite": {
-      "(.*) • (.*) — Zen Browser": "󰓇 $1 • $2",
+      "(.*) • (.*) — Zen Browser": "󰓇 $1 • $2", // Spotify in zen
     },
   },
   "hyprland/workspaces": {
