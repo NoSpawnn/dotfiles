@@ -11,6 +11,7 @@
     "max-length": 50,
     "separate-outputs": true,
     "rewrite": {
+      "(.*) [|] kitty": "  $1",
       "(.*) [|] spotify": "󰓇 $1",
       "(.*) - YouTube — Zen Browser [|] app.zen_browser.zen": "󰗃 $1",
       "(.*) — Zen Browser [|] app.zen_browser.zen": "󰖟 $1",
