@@ -1,4 +1,4 @@
-console_title_template = '{{.PWD}} in {{.Shell}}'
+console_title_template = '{{ if ne .Env.HOSTNAME .HostName }}{{ .UserName }}@{{ .HostName }}:{{ end }}{{ .PWD }}'
 version = 3
 final_space = true
 
