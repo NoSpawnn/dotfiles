@@ -24,5 +24,6 @@ if [ -d ~/.bashrc.d ]; then
 fi
 unset rc
 
-# This is vitally important for zed, so I'm committing it
+# This is vitally important for most apps that would need SSH authentication,
+# since bash is still the default shell and the environment is pulled from here.
 export SSH_AUTH_SOCK=$HOME/.var/app/com.bitwarden.desktop/data/.bitwarden-ssh-agent.sock
