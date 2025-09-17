@@ -33,11 +33,6 @@ button:hover {
     background: inherit;
 }
 
-/* you can set a style on hover for any module like this */
-#pulseaudio:hover {
-    background-color: #a37800;
-}
-
 #workspaces button {
     padding: 0 2rem;
     color: gray;
@@ -55,27 +50,13 @@ button:hover {
     color: white;
 }
 
-#tray menu {
-    font-family: Adwaita Sans;
-    font-weight: normal;
+#clock,
+#network,
+#bluetooth {
+    padding: 0 0.5rem;
 }
 
-#clock,
-#battery,
-#cpu,
-#memory,
-#disk,
-#temperature,
-#backlight,
-#network,
-#pulseaudio,
-#wireplumber,
-#custom-media,
-#tray,
-#mode,
-#idle_inhibitor,
-#scratchpad,
-#power-profiles-daemon,
-#mpd {
-    padding: 0 1rem;
+/* Otherwise the padding seems inconsistent? */
+#pulseaudio {
+    padding: 0 0.9rem;
 }

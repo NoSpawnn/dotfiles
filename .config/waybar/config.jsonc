@@ -4,10 +4,9 @@
   "margin": "10 10 0 10",
   "modules-left": ["hyprland/workspaces"],
   "modules-center": ["hyprland/window"],
-  "modules-right": ["bluetooth", "network", "clock"],
+  "modules-right": ["pulseaudio", "bluetooth", "network", "clock"],
   "hyprland/window": {
     "format": "{title} | {class}",
-
     "max-length": 50,
     "separate-outputs": true,
     "rewrite": {
@@ -19,6 +18,7 @@
       "(.*) - (.*) - Obsidian (.*) [|] obsidian": "󰽛 $1",
       "(.*) — (.*) [|] dev.zed.Zed": " $2 in $1",
       "• Discord [|](.*) [|] vesktop": " $1",
+      ".* [|] org.pulseaudio.pavucontrol": "󰴸 Audio Control",
     },
   },
   "hyprland/workspaces": {
@@ -34,6 +34,15 @@
     "on-scroll-down": "hyprctl dispatch workspace e-1",
     "on-click": "activate",
   },
+  "pulseaudio": {
+    "format": "{icon}",
+    "format-bluetooth": "(󰂯) {icon}",
+    "format-muted": "󰝟",
+    "format-icons": {
+      "alsa_output.usb-SteelSeries_Arctis_Nova_Pro_Wireless-00.analog-stereo": "",
+    },
+    "on-click": "flatpak run --user org.pulseaudio.pavucontrol",
+  },
   "bluetooth": {
     "format": "󰂯",
     "format-disabled": "󰂲",
@@ -46,9 +55,6 @@
     "format-wifi": "{icon}",
     "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
     "format-ethernet": "󰈀",
-  },
-  "tray": {
-    "spacing": 10,
   },
   "clock": {
     // "format": "{:%R - %d/%m/%y}",
