@@ -52,7 +52,8 @@ button:hover {
 
 #clock,
 #network,
-#bluetooth {
+#bluetooth,
+#window {
     padding: 0 0.5rem;
 }
 
