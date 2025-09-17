@@ -7,8 +7,15 @@ setopt COMPLETE_ALIASES
 ### Aliases ###
 alias grep="grep --color=auto"
 alias ls="ls -a --color=auto"
-if command -v bat &> /dev/null; then alias cat="bat"; fi
-if command -v eza &> /dev/null; then alias ls="eza -al"; fi
+if command -v bat &> /dev/null; then
+    alias cat="bat";
+    alias rcat="bat --style=plain" # Raw cat
+fi
+if command -v eza &> /dev/null; then
+    alias ls="eza -hl --icons=auto"
+    alias ll="eza -hla --icons=auto"
+    alias l.="eza -hl -d .* --icons=auto 2> /dev/null || true" # Suppressing the error code when no matches are found, there's probably a more robust way to do this
+fi
 if command -v nvim &> /dev/null; then alias vim="nvim"; fi
 flatpak list --user --app | grep -q "dev.zed.Zed" && alias zed="flatpak run --user dev.zed.Zed"
 
