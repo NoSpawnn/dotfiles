@@ -23,3 +23,5 @@ app/com.github.Matoking.protontricks/x86_64/stable
 app/com.usebottles.bottles/x86_64/stable
 app/org.blender.Blender/x86_64/stable
 app/org.freecad.FreeCAD/x86_64/stable
+app/org.pulseaudio.pavucontrol/x86_64/stable
+app/io.github.ebonjaeger.bluejay/x86_64/stable
