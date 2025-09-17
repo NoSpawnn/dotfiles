@@ -53,7 +53,9 @@ button:hover {
 #clock,
 #network,
 #bluetooth,
-#window {
+#window,
+#cpu,
+#memory {
     padding: 0 0.5rem;
 }
 

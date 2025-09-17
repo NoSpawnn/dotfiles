@@ -75,6 +75,6 @@
   "memory": {
     "interval": 5,
     "format": " {used}G",
-    "max-length": 7,
+    "max-length": 8,
   },
 }
