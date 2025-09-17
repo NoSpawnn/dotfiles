@@ -4,7 +4,7 @@
   "margin": "10 10 0 10",
   "modules-left": ["hyprland/workspaces"],
   "modules-center": ["hyprland/window", "custom/separator", "clock"],
-  "modules-right": ["pulseaudio", "bluetooth", "network"],
+  "modules-right": ["cpu", "memory", "pulseaudio", "bluetooth", "network"],
   "hyprland/window": {
     "format": "{title} | {class}",
     "max-length": 50,
@@ -66,5 +66,15 @@
   "clock": {
     // "format": "{:%R - %d/%m/%y}",
     "format": "{:%b %e %Y %R}",
+  },
+  "cpu": {
+    "interval": 5,
+    "format": " {usage}%",
+    "max-length": 5,
+  },
+  "memory": {
+    "interval": 5,
+    "format": " {used}G",
+    "max-length": 7,
   },
 }
