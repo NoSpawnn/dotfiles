@@ -19,6 +19,7 @@
       "(.*) — (.*) [|] dev.zed.Zed": " $2 in $1",
       "• Discord [|](.*) [|] vesktop": " $1",
       ".* [|] org.pulseaudio.pavucontrol": "󰴸 Audio Control",
+      ".* [|] io.github.ebonjaeger.bluejay": "󰂯 Bluetooth Control",
     },
   },
   "hyprland/workspaces": {
