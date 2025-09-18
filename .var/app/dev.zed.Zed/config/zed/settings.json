@@ -20,5 +20,14 @@
       "program": "/bin/zsh"
     }
   },
-  "buffer_font_family": "0xProto Nerd Font Mono"
+  "buffer_font_family": "0xProto Nerd Font Mono",
+  "auto_install_extensions": {
+    "html": true,
+    "toml": true,
+    "git-firefly": true,
+    "terraform": true,
+    "basher": true,
+    "just": true,
+    "marksman": true
+  }
 }
