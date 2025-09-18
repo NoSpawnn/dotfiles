@@ -49,8 +49,8 @@ dev-pod-new LANG="" DIR="." NAME="" LANG_VERSION="latest" SHELL="zsh" IDE="zed":
 
     devpod up {{ DIR }} \
         --recreate \
-        --dotfiles https://github.com/NoSpawnn/dotfiles.git \
-        --dotfiles-script install-devpod.sh \
+        --dotfiles "https://github.com/NoSpawnn/dotfiles.git" \
+        --dotfiles-script "install-devpod.sh" \
         --workspace-env SHELL={{ SHELL }} \
         --ide {{ IDE }}
 
@@ -66,9 +66,9 @@ dev-vm-new IMAGE="prompt" NAME="prompt" ENTER="ssh":
     source ./functions.sh
 
     IMAGES=(
-      fedora/42
-      ubuntu/22.04
-      ubuntu/24.04
+        "fedora/42"
+        "ubuntu/22.04"
+        "ubuntu/24.04"
     )
 
     if [ "{{ IMAGE }}" == "prompt" ]; then
@@ -85,7 +85,7 @@ dev-vm-new IMAGE="prompt" NAME="prompt" ENTER="ssh":
 
     # If we aren't entering the VM, then we're done here
     if [ "{{ ENTER }}" == "no" ]; then
-        exit
+        exit 0
     fi
 
     # Wait for the VM to launch
