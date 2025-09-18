@@ -2,6 +2,6 @@
 .gitignore
 README.md
 flatpaks.list
-distrobox.ini
+distrobox
 install.sh
 scripts
