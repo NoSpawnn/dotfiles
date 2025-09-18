@@ -17,7 +17,9 @@ if command -v eza &> /dev/null; then
     alias l.="eza -hl -d .* --icons=auto 2> /dev/null || true" # Suppressing the error code when no matches are found, there's probably a more robust way to do this
 fi
 if command -v nvim &> /dev/null; then alias vim="nvim"; fi
-flatpak list --user --app | grep -q "dev.zed.Zed" && alias zed="flatpak run --user dev.zed.Zed"
+if command -v flatpak &> /dev/null; then
+    flatpak list --user --app | grep -q "dev.zed.Zed" && alias zed="flatpak run --user dev.zed.Zed"
+fi
 
 ### Binds ###
 # List functions with `print -l ${(ok)functions}`
@@ -43,9 +45,11 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 zstyle ':completion:*' menu select
 
 ### Exports ###
-export PATH=$PATH:$HOME/.local/bin
-export EDITOR=vim
-export SSH_AUTH_SOCK=$HOME/.var/app/com.bitwarden.desktop/data/.bitwarden-ssh-agent.sock
+if [[ $DEVPOD =~ "true" ]]; then
+    export PATH=$PATH:$HOME/.local/bin
+    export EDITOR=vim
+    export SSH_AUTH_SOCK=$HOME/.var/app/com.bitwarden.desktop/data/.bitwarden-ssh-agent.sock
+fi
 
 ### Envs ###
 [ -f $HOME/.cargo/env ] && source "$HOME/.cargo/env" # Rust
