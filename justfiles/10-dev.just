@@ -16,11 +16,21 @@ dev-pod-new LANG="" DIR="." NAME="" LANG_VERSION="latest" SHELL="zsh" IDE="zed":
         exit 1
     fi
 
+    source "$(dirname {{ justfile() }})/functions.sh"
+
     # https://github.com/devcontainers/images
     declare -A IMAGES=(
         [rust]="mcr.microsoft.com/devcontainers/rust"
         [go]="mcr.microsoft.com/devcontainers/go"
     )
+
+    if [[ -z "{{ LANG }}" ]]; then
+        lang="$(choose "Choose a language (image) for the container: " ${!IMAGES[@]})"
+    else
+        lang="{{ LANG }}"
+    fi
+
+    echo "Using language '$lang'"
 
     if [[ -z "{{ NAME }}" ]]; then
         name=$(basename $(realpath {{ DIR }}))
@@ -29,7 +39,8 @@ dev-pod-new LANG="" DIR="." NAME="" LANG_VERSION="latest" SHELL="zsh" IDE="zed":
         NAME="{{ NAME }}"
     fi
 
-    lang="{{ LANG }}"
+    echo "Using name $NAME"
+
     version="{{ LANG_VERSION }}"
     IMAGE="${IMAGES[$lang]}:{{ LANG_VERSION }}"
 
