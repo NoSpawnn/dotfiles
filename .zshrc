@@ -20,11 +20,16 @@ if command -v nvim &> /dev/null; then alias vim="nvim"; fi
 flatpak list --user --app | grep -q "dev.zed.Zed" && alias zed="flatpak run --user dev.zed.Zed"
 
 ### Binds ###
+# List functions with `print -l ${(ok)functions}`
 bindkey "^[[3~" delete-char
 bindkey "^[[1;5D" backward-word
 bindkey "^[[1;5C" forward-word
 bindkey "^H" backward-delete-word
 bindkey "^[[3;5~" delete-word
+bindkey "^I" menu-complete
+bindkey "^[[Z" reverse-menu-complete
+bindkey "^[[A" history-search-backward
+bindkey "^[[B" history-search-forward
 
 ### History ###
 HISTFILE=~/.zhistory
@@ -32,8 +37,6 @@ HISTSIZE=10000
 SAVEHIST=10000
 setopt histignorealldups
 setopt SHARE_HISTORY
-bindkey "^[[A" history-search-backward
-bindkey "^[[B" history-search-forward
 
 ### Case-insensitive path-completion ###
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
