@@ -1,6 +1,12 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+### Functions ###
+
+_command_exists() {
+    command -v "$1" &> /dev/null
+}
+
 ### Opts ###
 setopt COMPLETE_ALIASES
 
@@ -56,7 +62,7 @@ fi
 [ -f $HOME/.asdf/asdf.sh ] && source "$HOME/.asdf/asdf.sh" # asdf
 
 # Init oh-my-posh
-if command -v oh-my-posh &> /dev/null; then
+if _command_exists oh-my-posh; then
     eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/config.toml)"
 fi
 
@@ -68,14 +74,18 @@ elif [[ -d /usr/share/zsh-autosuggestions ]]; then
 fi
 
 # Init zoxide if it is installed
-if command -v zoxide &> /dev/null; then
+if _command_exists zoxide; then
   eval "$(zoxide init zsh)"
 fi
 
 # Init asdf if it is installed
-if command -v asdf &> /dev/null; then
+if _command_exists asdf; then
   fpath=(${ASDF_DIR}/completions $fpath)
 fi
 
 ### Autocompletion ###
 autoload -Uz +X compinit && compinit
+
+if _command_exists devpod; then
+    source <(devpod completion zsh)
+fi
