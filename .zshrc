@@ -1,7 +1,7 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-### Functions ###
+### Utility functions ###
 
 _command_exists() {
     command -v "$1" &> /dev/null
@@ -11,6 +11,7 @@ _command_exists() {
 setopt COMPLETE_ALIASES
 
 ### Aliases ###
+alias mjust="just --justfile=\"$(dirname "$(realpath ~/.zshrc)")/justfiles/justfile\""
 alias grep="grep --color=auto"
 alias ls="ls -a --color=auto"
 if command -v bat &> /dev/null; then

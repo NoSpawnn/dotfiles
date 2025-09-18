@@ -2,7 +2,8 @@
 .gitignore
 README.md
 flatpaks.list
-distrobox
+distrobox.ini
 install.sh
 install-devpod.sh
 scripts
+justfiles

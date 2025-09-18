@@ -1,0 +1,7 @@
+_default:
+    @/usr/bin/just --justfile ./justfile --list --list-heading $'Available commands:\n' --list-prefix $' - '
+
+# import? "/usr/share/eepy_os/justfile"
+import "./00-system.just"
+import "./10-dev.just"
+import "./20-config.just"
