@@ -4,11 +4,9 @@
 
 - Best used (and built in the context of) my custom Fedora Atomic image, [eepy_OS](https://github.com/NoSpawnn/eepy_OS)
 
-
 ## FAQ
 
 - What the hell is that command in your waybar config?
-
   - I assume you mean this:
 
     ```bash
@@ -17,7 +15,6 @@
 
   - It switches to the "next" audio device according to `pactl`, the order of devices is decided by the output for `pactl list sinks`
   - I'll explain the command:
-
     - First, get the names of all pulseaudio sinks, this extracts the 2nd column (whitespace separated) from the output of the `pactl` command
 
       ```bash
