@@ -38,3 +38,7 @@
       ```bash
       xargs -r pactl set-default-sink && pactl list short sink-inputs | awk '{print $1}' | xargs -I{} pactl move-sink-input {} $(pactl get-default-sink)
       ```
+
+## References, Inspiration, etc
+
+- [mylinuxforwork/dotfiles: The ML4W Dotfiles for Hyprland - An advanced and full-featured configuration for the dynamic tiling window manager Hyprland. Ready to install with the Dotfiles Installer app with setup scripts for Arch, Fedora and openSuse.](https://github.com/mylinuxforwork/dotfiles)
