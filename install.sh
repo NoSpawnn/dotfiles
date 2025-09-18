@@ -6,9 +6,9 @@ ensure_flatpaks() {
     local flatpaks=$(cat $(realpath $1) | tr '\n' ' ' )
 }
 
-ensure_flatpaks ./flatpaks.list
+#ensure_flatpaks ./flatpaks.list
 
-exit 0
+#exit 0
 
 # Install oh-my-posh
 curl -s https://ohmyposh.dev/install.sh | bash -s
