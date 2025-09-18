@@ -1,9 +1,0 @@
-.git
-.gitignore
-README.md
-flatpaks.list
-distrobox.ini
-install.sh
-install-devpod.sh
-scripts
-justfiles
