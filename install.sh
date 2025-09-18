@@ -17,4 +17,4 @@ curl -s https://ohmyposh.dev/install.sh | bash -s
 stow .
 
 # Setup distroboxes (see ./distrobox)
-bash ./distrobox/deploy.sh
+distrobox assemble create -R --file distrobox.ini
