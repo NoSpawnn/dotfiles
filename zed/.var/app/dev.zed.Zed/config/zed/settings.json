@@ -29,5 +29,15 @@
     "basher": true,
     "just": true,
     "marksman": true
+  },
+  "languages": {
+    "Markdown": {
+      "tab_size": 4,
+      "auto_indent": false,
+      "soft_wrap": "editor_width"
+    },
+    "YAML": {
+      "tab_size": 2
+    }
   }
 }
