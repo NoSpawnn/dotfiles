@@ -4,6 +4,13 @@
 dev-pod-new LANG="" DIR="." NAME="" LANG_VERSION="latest" SHELL="zsh" IDE="zed":
     #!/usr/bin/env bash
 
+    LANG="{{ LANG }}"
+    DIR="{{ DIR }}"
+    NAME="{{ NAME }}"
+    LANG_VERSION="{{ LANG_VERSION }}"
+    SHELL="{{ SHELL }}"
+    IDE="{{ IDE }}"
+
     if ! command -v devpod &> /dev/null; then
         echo "The devpod CLI is not on your PATH. Add or install it to use this script."
         echo "    https://devpod.sh/docs/getting-started/install#optional-install-devpod-cli"
@@ -24,29 +31,29 @@ dev-pod-new LANG="" DIR="." NAME="" LANG_VERSION="latest" SHELL="zsh" IDE="zed":
         [go]="mcr.microsoft.com/devcontainers/go"
     )
 
-    if [[ -z "{{ LANG }}" ]]; then
+    if [[ -z "$LANG" ]]; then
         lang="$(choose "Choose a language (image) for the container: " ${!IMAGES[@]})"
     else
-        lang="{{ LANG }}"
+        lang="$LANG"
     fi
 
     echo "Using language '$lang'"
 
-    if [[ -z "{{ NAME }}" ]]; then
-        name=$(basename $(realpath {{ DIR }}))
+    if [[ -z "$NAME" ]]; then
+        name=$(basename $(realpath "$DIR"))
         NAME="${name#.}" # strip leading '.' if there is one
     else
-        NAME="{{ NAME }}"
+        NAME="$NAME"
     fi
 
     echo "Using name $NAME"
 
-    version="{{ LANG_VERSION }}"
-    IMAGE="${IMAGES[$lang]}:{{ LANG_VERSION }}"
+    version="$LANG_VERSION"
+    IMAGE="${IMAGES[$lang]}:$LANG_VERSION"
 
     unset -v name lang version # Sanity check we're using the right ones (UPPERCASE)
 
-    cat <<EOF >{{ DIR }}/.devcontainer.json
+    cat <<EOF >"$DIR/.devcontainer.json"
     {
         "name": "$NAME",
         "image": "$IMAGE",
@@ -58,16 +65,20 @@ dev-pod-new LANG="" DIR="." NAME="" LANG_VERSION="latest" SHELL="zsh" IDE="zed":
     }
     EOF
 
-    devpod up {{ DIR }} \
+    devpod up $DIR \
         --recreate \
         --dotfiles "https://github.com/NoSpawnn/dotfiles.git" \
         --dotfiles-script "install-devpod.sh" \
-        --workspace-env SHELL={{ SHELL }} \
-        --ide {{ IDE }}
+        --workspace-env "SHELL=$SHELL" \
+        --ide "$IDE"
 
 [group('Dev')]
 dev-vm-new IMAGE="prompt" NAME="prompt" ENTER="ssh":
     #!/usr/bin/env bash
+
+    IMAGE="{{ IMAGE }}"
+    NAME="{{ NAME }}"
+    ENTER="{{ ENTER }}"
 
     if ! command -v incus &> /dev/null; then
         echo "incus is not on your PATH. Add or install it to use this script."
@@ -82,20 +93,20 @@ dev-vm-new IMAGE="prompt" NAME="prompt" ENTER="ssh":
         "ubuntu/24.04"
     )
 
-    if [ "{{ IMAGE }}" == "prompt" ]; then
+    if [ "$IMAGE" == "prompt" ]; then
       IMAGE="images:$(choose "Image for new VM: " ${IMAGES[@]})"
     fi
-    if [ "{{ NAME }}" == "prompt" ]; then
+    if [ "$NAME" == "prompt" ]; then
       echo -en "Name for new VM: "
       read NAME
     fi
 
     incus_launch="incus launch --vm -c security.secureboot=false $IMAGE $NAME"
-    echo $incus_launch
+    echo "$incus_launch"
     $incus_launch
 
     # If we aren't entering the VM, then we're done here
-    if [ "{{ ENTER }}" == "no" ]; then
+    if [ "$ENTER" == "no" ]; then
         exit 0
     fi
 
@@ -103,16 +114,16 @@ dev-vm-new IMAGE="prompt" NAME="prompt" ENTER="ssh":
     # Checking the status in `incus ls` doesn't work since VMs
     # immediately say they are running, we need to wait for
     # the actual agent to start
-    while ! incus exec $NAME /bin/true 2> /dev/null; do
+    while ! incus exec "$NAME" /bin/true 2> /dev/null; do
         sleep 2
     done
 
-    if [ "{{ ENTER }}" == "ssh" ]; then
+    if [ "$ENTER" == "ssh" ]; then
         # Requires ssh2incus running and listening on port 2222
         # TODO: make agent forwarding work with bitwarden ssh agent
         # From ssh2incus log: Only NAT mode is supported for proxies on VM instances
         # https://linuxcontainers.org/incus/docs/main/reference/devices_proxy/
         ssh -p 2222 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o LogLevel=ERROR "$NAME+$USER@localhost"
-    elif [ "{{ ENTER }}" == "shell"]; then
+    elif [ "$ENTER" == "shell"]; then
         incus shell $NAME
     fi
