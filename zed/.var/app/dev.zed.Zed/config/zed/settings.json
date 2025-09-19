@@ -7,6 +7,9 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "features": {
+    "edit_prediction_provider": "none"
+  },
   "ssh_connections": [],
   "ui_font_size": 16,
   "buffer_font_size": 15,
