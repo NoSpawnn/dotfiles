@@ -4,7 +4,7 @@
 
 SHELL_CONF_DIR="$HOME/dotfiles/shell"
 
-cp "$SHELL_CONF_DIR/.zshrc ~/.zshrc"
+cp $SHELL_CONF_DIR/.zshrc ~/.zshrc
 
 curl -s https://ohmyposh.dev/install.sh | bash -s
-cp -r "$SHELL_CONF_DIR/.config/ohmyposh ~/.config/ohmyposh"
+cp -r $SHELL_CONF_DIR/.config/ohmyposh ~/.config/ohmyposh
