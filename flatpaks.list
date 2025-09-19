@@ -1,3 +1,4 @@
+app/com.bitwarden.desktop/x86_64/stable
 app/app.zen_browser.zen/x86_64/stable
 app/org.upscayl.Upscayl/x86_64/stable
 app/fr.handbrake.ghb/x86_64/stable
@@ -8,7 +9,6 @@ app/md.obsidian.Obsidian/x86_64/stable
 app/com.rtosta.zapzap/x86_64/stable
 app/org.kde.kdenlive/x86_64/stable
 app/io.github.pwr_solaar.solaar/x86_64/stable
-app/com.bitwarden.desktop/x86_64/stable
 app/org.signal.Signal/x86_64/stable
 app/dev.zed.Zed/x86_64/stable
 app/io.podman_desktop.PodmanDesktop/x86_64/stable
