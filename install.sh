@@ -6,7 +6,7 @@ set -euxo pipefail
 curl -s https://ohmyposh.dev/install.sh | bash -s
 
 # Symlink dotfiles
-stow zsh
+stow shell
 stow hyprland
 # Explicitly create the zed config dir, else stow will symlink every folder
 mkdir -p $HOME/.var/app/dev.zed.Zed/config/zed && stow zed
