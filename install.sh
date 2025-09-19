@@ -6,7 +6,9 @@ set -euxo pipefail
 curl -s https://ohmyposh.dev/install.sh | bash -s
 
 # Symlink dotfiles
-stow .
+stow zsh
+stow hyprland
+# Explicitly create the zed config dir, else stow will symlink every folder
+mkdir -p $HOME/.var/app/dev.zed.Zed/config && stow zed
 
-# Setup distroboxes (see ./distrobox)
 distrobox assemble create -R --file distrobox.ini
