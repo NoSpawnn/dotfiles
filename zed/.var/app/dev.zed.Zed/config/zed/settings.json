@@ -16,7 +16,7 @@
   "theme": {
     "mode": "system",
     "light": "Ayu Mirage",
-    "dark": "Ayu Dark"
+    "dark": "Fleet Dark Purple"
   },
   "terminal": {
     "shell": {
@@ -31,7 +31,8 @@
     "terraform": true,
     "basher": true,
     "just": true,
-    "marksman": true
+    "marksman": true,
+    "fleet-themes": true
   },
   "languages": {
     "Markdown": {
