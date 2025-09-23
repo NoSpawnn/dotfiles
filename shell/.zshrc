@@ -85,8 +85,21 @@ if _command_exists asdf; then
 fi
 
 ### Autocompletion ###
+autoload bashcompinit && bashcompinit
 autoload -Uz +X compinit && compinit
 
 if _command_exists devpod; then
     source <(devpod completion zsh)
+fi
+
+if _command_exists kubectl; then
+    source <(kubectl completion zsh)
+fi
+
+if _command_exists aws && _command_exists aws_completer; then
+    complete -C '$(which aws_completer)' aws
+fi
+
+if _command_exists eksctl; then
+    source <(eksctl completion zsh)
 fi
