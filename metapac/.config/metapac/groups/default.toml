@@ -1,1 +1,1 @@
-dnf = ["awscli2", "kubectl", "opentofu", "terraform-ls", "just"]
+dnf = ["awscli2", "kubectl", "opentofu", "terraform-ls", "just", "tealdeer"]
