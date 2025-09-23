@@ -1,0 +1,1 @@
+dnf = ["awscli2", "kubectl", "opentofu", "terraform-ls"]
