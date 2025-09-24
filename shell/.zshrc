@@ -74,19 +74,17 @@ elif [[ -d /usr/share/zsh-autosuggestions ]]; then
   source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 fi
 
-# Init zoxide if it is installed
+### Autocompletion ###
+autoload bashcompinit && bashcompinit
+autoload -Uz +X compinit && compinit
+
 if _command_exists zoxide; then
   eval "$(zoxide init zsh)"
 fi
 
-# Init asdf if it is installed
 if _command_exists asdf; then
   fpath=(${ASDF_DIR}/completions $fpath)
 fi
-
-### Autocompletion ###
-autoload bashcompinit && bashcompinit
-autoload -Uz +X compinit && compinit
 
 if _command_exists devpod; then
     source <(devpod completion zsh)
