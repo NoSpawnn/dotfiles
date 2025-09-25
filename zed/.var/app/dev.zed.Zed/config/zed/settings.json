@@ -10,7 +10,24 @@
   "features": {
     "edit_prediction_provider": "none"
   },
-  "ssh_connections": [],
+  "ssh_connections": [
+    {
+      "host": "10.121.81.183",
+      "username": "root",
+      "args": [
+        "-o",
+        "UserKnownHostsFile=/dev/null",
+        "-o",
+        "StrictHostKeyChecking=no",
+        "-A"
+      ],
+      "projects": [
+        {
+          "paths": ["/root/AYUV-OS"]
+        }
+      ]
+    }
+  ],
   "ui_font_size": 16,
   "buffer_font_size": 15,
   "theme": {
@@ -23,7 +40,7 @@
       "program": "/bin/zsh"
     }
   },
-  "buffer_font_family": "0xProto Nerd Font Mono",
+  "buffer_font_family": "0xProto Nerd Font",
   "auto_install_extensions": {
     "html": true,
     "toml": true,
@@ -32,7 +49,8 @@
     "basher": true,
     "just": true,
     "marksman": true,
-    "fleet-themes": true
+    "fleet-themes": true,
+    "dockerfile": true
   },
   "languages": {
     "Markdown": {
@@ -43,5 +61,8 @@
     "YAML": {
       "tab_size": 2
     }
+  },
+  "file_types": {
+    "Dockerfile": ["containerfile", "*.containerfile", "Dockerfile.*"]
   }
 }
