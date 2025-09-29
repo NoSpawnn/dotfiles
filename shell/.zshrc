@@ -10,6 +10,18 @@ _command_exists() {
 ### Opts ###
 setopt COMPLETE_ALIASES
 
+### Envs/Path/Other exports ###
+if [ -d $HOME/.cargo ]; then
+    source "$HOME/.cargo/env"
+    PATH=$PATH:$HOME/.cargo/bin
+fi
+
+if [[ "$DEVPOD" != "true" ]]; then
+    PATH=$PATH:$HOME/.local/bin
+    export EDITOR=vim
+    export SSH_AUTH_SOCK=$HOME/.var/app/com.bitwarden.desktop/data/.bitwarden-ssh-agent.sock
+fi
+
 ### Aliases ###
 alias mjust="just --justfile=\"$(dirname "$(realpath ~/.zshrc)")/justfiles/justfile\""
 alias grep="grep --color=auto"
@@ -51,16 +63,7 @@ setopt SHARE_HISTORY
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 zstyle ':completion:*' menu select
 
-### Exports ###
-if [[ "$DEVPOD" != "true" ]]; then
-    export PATH=$PATH:$HOME/.local/bin
-    export EDITOR=vim
-    export SSH_AUTH_SOCK=$HOME/.var/app/com.bitwarden.desktop/data/.bitwarden-ssh-agent.sock
-fi
 
-### Envs ###
-[ -f $HOME/.cargo/env ] && source "$HOME/.cargo/env" # Rust
-[ -f $HOME/.asdf/asdf.sh ] && source "$HOME/.asdf/asdf.sh" # asdf
 
 # Init oh-my-posh
 if _command_exists oh-my-posh; then
@@ -101,3 +104,5 @@ fi
 if _command_exists eksctl; then
     source <(eksctl completion zsh)
 fi
+
+export PATH
