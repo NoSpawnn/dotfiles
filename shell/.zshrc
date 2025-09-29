@@ -23,7 +23,7 @@ if [[ "$DEVPOD" != "true" ]]; then
 fi
 
 ### Aliases ###
-alias mjust="just --justfile=\"$(dirname "$(realpath ~/.zshrc)")/justfiles/justfile\""
+alias yust="just --justfile=\"\$HOME/.user.justfile\" --working-directory=\".\""
 alias grep="grep --color=auto"
 alias ls="ls -a --color=auto"
 if command -v bat &> /dev/null; then
@@ -62,8 +62,6 @@ setopt SHARE_HISTORY
 ### Case-insensitive path-completion ###
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 zstyle ':completion:*' menu select
-
-
 
 # Init oh-my-posh
 if _command_exists oh-my-posh; then

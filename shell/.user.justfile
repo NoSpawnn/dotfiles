@@ -1,7 +1,29 @@
+_default:
+    @/usr/bin/just --justfile {{ justfile() }} --list --list-heading $'Available commands:\n' --list-prefix $' - '
+
+# Show BIOS info
+[group('System')]
+bios-info:
+    #!/usr/bin/env bash
+    echo "Manufacturer: $(sudo dmidecode -s baseboard-manufacturer)"
+    echo "Product Name: $(sudo dmidecode -s baseboard-product-name)"
+    echo "     Version: $(sudo dmidecode -s bios-version)"
+    echo "Release Date: $(sudo dmidecode -s bios-release-date)"
+
+# Boot into this device's BIOS/UEFI screen
+[group('System')]
+reboot-bios:
+    #!/usr/bin/env bash
+    if [ -d /sys/firmware/efi ]; then
+      systemctl reboot --firmware-setup
+    else
+      echo "Rebooting to legacy BIOS from OS is not supported."
+      exit 1
+    fi
+
 # Create and enter a new devpod with the specified options using podman
 [group('Dev')]
-[no-cd]
-dev-pod-new LANG="" DIR="." NAME="" LANG_VERSION="latest" SHELL="zsh" IDE="zed":
+devpod-new LANG="" DIR="." NAME="" LANG_VERSION="latest" SHELL="zsh" IDE="zed":
     #!/usr/bin/env bash
 
     LANG="{{ LANG }}"
@@ -127,3 +149,19 @@ dev-vm-new IMAGE="prompt" NAME="prompt" ENTER="ssh":
     elif [ "$ENTER" == "shell"]; then
         incus shell $NAME
     fi
+
+# Install flatpaks from a file
+[group('Config')]
+install-flatpaks LIST_FILE="" SCOPE="user":
+    #!/usr/bin/env bash
+
+    LIST_FILE="{{ LIST_FILE }}"
+    SCOPE="{{ SCOPE }}"
+
+    flatpaks=$(cat $(realpath "$LIST_FILE") | tr '\n' ' ' )
+
+    if [[ "$SCOPE" == 'user' ]]; then
+        flatpak remote-add --if-not-exists --user flathub-user https://flathub.org/repo/flathub.flatpakrepo
+    fi
+
+    flatpak install -y --"$SCOPE" $flatpaks
