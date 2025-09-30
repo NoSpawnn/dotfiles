@@ -10,6 +10,9 @@
   "features": {
     "edit_prediction_provider": "none"
   },
+  "buffer_font_features": {
+    "calt": false
+  },
   "ssh_connections": [
     {
       "host": "10.121.81.183",
