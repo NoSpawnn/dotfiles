@@ -35,3 +35,8 @@ workspace 17 output DP-2
 workspace 18 output DP-2
 workspace 19 output DP-2
 workspace 10 output DP-2
+
+### Special window rules ###
+
+# Move PiP videos to second monitor
+for_window [app_id="app\.zen_browser\.zen" title="^Picture-in-Picture$"] move container to output DP-2
