@@ -7,6 +7,8 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "vim_mode": true,
+  "relative_line_numbers": true,
   "features": {
     "edit_prediction_provider": "none"
   },
