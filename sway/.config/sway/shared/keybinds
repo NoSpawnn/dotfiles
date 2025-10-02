@@ -92,8 +92,8 @@ bindsym $mod+Shift+q exec swaynag -t warning -m 'You pressed the exit shortcut. 
     bindsym $mod+v splitv
 
     # Switch the current container between different layout styles
-    bindsym $mod+Shift+s layout stacking
-    bindsym $mod+Shift+w layout tabbed
+    #bindsym $mod+Shift+s layout stacking # not sure if i care about either of these?
+    #bindsym $mod+Shift+w layout tabbed
     bindsym $mod+Shift+e layout toggle split
 
     # Make the current focus fullscreen
@@ -144,8 +144,10 @@ bindsym --locked XF86AudioMute exec pactl set-sink-mute \@DEFAULT_SINK@ toggle
 bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume \@DEFAULT_SINK@ -5%
 bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume \@DEFAULT_SINK@ +5%
 bindsym --locked XF86AudioMicMute exec pactl set-source-mute \@DEFAULT_SOURCE@ toggle
+
 # Special keys to adjust brightness via brightnessctl
 bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
 bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
-# Special key to take a screenshot with grim
-bindsym Print exec grim
+
+# Screenshot a region
+bindsym $mod+Shift+s exec grim -g "$(slurp)" - | wl-copy
