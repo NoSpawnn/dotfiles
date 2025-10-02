@@ -1,5 +1,14 @@
 set {
     $popup floating enable; border pixel 1
+    $workspace move container to workspace
+}
+
+# Workspaces
+for_window {
+    [app_id="app\.zen_browser\.zen"] $workspace 1
+    [app_id="dev\.zed\.Zed"]         $workspace 2
+    [app_id="vesktop"]               $workspace 11
+    [app_id="spotify"]               $workspace 12
 }
 
 # Popup windows - floating and sticky
