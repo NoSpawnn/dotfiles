@@ -15,24 +15,6 @@
   "buffer_font_features": {
     "calt": false
   },
-  "ssh_connections": [
-    {
-      "host": "10.121.81.183",
-      "username": "root",
-      "args": [
-        "-o",
-        "UserKnownHostsFile=/dev/null",
-        "-o",
-        "StrictHostKeyChecking=no",
-        "-A"
-      ],
-      "projects": [
-        {
-          "paths": ["/root/AYUV-OS"]
-        }
-      ]
-    }
-  ],
   "ui_font_size": 16,
   "buffer_font_size": 15,
   "theme": {
