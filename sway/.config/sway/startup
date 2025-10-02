@@ -1,1 +1,0 @@
-exec flatpak run com.bitwarden.desktop # Autostart bitwarden for the SSH agent :3

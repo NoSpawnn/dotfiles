@@ -1,0 +1,12 @@
+# Sane input defaults
+
+input type:pointer {
+	accel_profile "flat"
+}
+
+input type:touchpad {
+    accel_profile "flat"
+    dwt enabled
+    middle_emulation enabled
+    tap enabled
+}
