@@ -1,0 +1,10 @@
+set {
+    $popup floating enable; border pixel 1
+}
+
+# Popup windows - floating and sticky
+for_window {
+    [app_id="app\.zen_browser\.zen" title="^Picture-in-Picture$"] $popup
+    [app_id="app\.zen_browser\.zen" title="Extension:.*"]         $popup
+    [app_id="org\.pulseaudio\.pavucontrol"]                       $popup
+}
