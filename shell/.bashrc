@@ -44,6 +44,7 @@ if command -v nvim &> /dev/null; then alias vim="nvim"; fi
 if command -v flatpak &> /dev/null; then
     flatpak list --user --app | grep -q "dev.zed.Zed" && alias zed="flatpak run --user dev.zed.Zed"
 fi
+alias e="echo" # This is nice
 
 # Init oh-my-posh
 if _command_exists oh-my-posh; then
