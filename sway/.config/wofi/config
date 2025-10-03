@@ -2,4 +2,4 @@ insensitive=true
 prompt=launch
 allow_images=true
 image_size=32
-term=kitty
+term=ghostty
