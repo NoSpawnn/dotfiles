@@ -1,12 +1,15 @@
 ### Autostart applications ###
 
 exec flatpak run com.bitwarden.desktop # Autostart bitwarden for the SSH agent :3
+exec flatpak run app.zen_browser.zen
+exec flatpak run com.spotify.Client
 
 ### Settings ###
 
 exec gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
 
 # Idle config
+set $lock swaylock --color 000000
 exec swayidle -w \
 	timeout 300 "$lock" \
     timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
