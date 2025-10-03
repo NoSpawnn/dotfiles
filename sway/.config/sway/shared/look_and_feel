@@ -4,4 +4,8 @@ default_border pixel 1
 # Disable window titles
 for_window [title=".*"] title_format ""
 
+bar {
+    swaybar_command waybar
+}
+
 seat * xcursor_theme Twilight-cursors 26
