@@ -52,5 +52,5 @@ font-family = 0xProto Nerd Font
 font-size = 16
 window-padding-x = 10
 window-padding-y = 5
-background-opacity = 0.3
+background-opacity = 0.8
 background = 000000
