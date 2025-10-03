@@ -14,7 +14,6 @@ set $right l
 
 set $term ghostty
 set $menu wofi --show drun -c ~/.config/wofi/config
-set $lock swaylock --color 000000
 
 # Include the other stuff
 include ./shared/*
