@@ -16,4 +16,5 @@ for_window {
     [app_id="app\.zen_browser\.zen" title="^Picture-in-Picture$"] $popup
     [app_id="app\.zen_browser\.zen" title="Extension:.*"]         $popup
     [app_id="org\.pulseaudio\.pavucontrol"]                       $popup
+    [class="Bitwarden"]                                           $popup
 }
