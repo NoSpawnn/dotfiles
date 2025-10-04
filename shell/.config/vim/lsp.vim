@@ -7,6 +7,12 @@ let lspServers = [
       \   filetype: ['rust'],
       \   path: 'rust-analyzer',
       \   args: []
+      \ },
+      \ #{
+      \   name: 'bash-language-server',
+      \   filetype: ['sh'],
+      \   path: 'bash-language-server',
+      \   args: ['start']
       \ }
       \ ]
 
@@ -23,6 +29,7 @@ inoremap <silent> <C-Space> <C-x><C-o>
 
 " Set omnifunc for completion
 autocmd FileType rust setlocal omnifunc=lsp#complete
+autocmd FileType sh setlocal omnifunc=lsp#complete
 
 " Custom diagnostic sign characters
 autocmd User LspSetup call LspOptionsSet(#{
