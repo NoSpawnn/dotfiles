@@ -16,12 +16,18 @@ function! s:ensure(repo)
   execute 'set runtimepath+=' . fnameescape(path)
 endfunction
 
-" fzf
+" fzf - fzf.vim
 call s:ensure('junegunn/fzf')
 call s:ensure('junegunn/fzf.vim')
 
-" lsp
+" lsp - lsp.vim
 call s:ensure('yegappan/lsp')
 
-" color schemes
+" color schemes - colors.vim
 call s:ensure('shrikecode/kyotonight.vim')
+
+" which-key - which-key.vim
+call s:ensure('liuchengxu/vim-which-key')
+
+" lightline - line.vim
+call s:ensure('itchyny/lightline.vim')
