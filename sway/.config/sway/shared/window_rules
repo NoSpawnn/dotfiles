@@ -16,7 +16,9 @@ for_window {
 # Popup windows - floating and sticky
 for_window {
     [app_id="app\.zen_browser\.zen" title="^Picture-in-Picture$"] $popup
-    [app_id="app\.zen_browser\.zen" title="Extension:.*"]         $popup
+    [app_id="app\.zen_browser\.zen" title="^Extension:.*"]        $popup
     [app_id="org\.pulseaudio\.pavucontrol"]                       $popup
     [class="Bitwarden"]                                           $popup
+    [app_id="app\.zen_browser\.zen" title="^Page Info —.*"]       $popup
+    [app_id="xdg-desktop-portal" title="^Open Folder$"]           $popup
 }
