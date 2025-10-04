@@ -15,7 +15,7 @@ fi
 ### Envs/Path/Other exports ###
 PATH="$PATH:$HOME/.local/bin"
 
-if [ -d $HOME/.cargo ]; then
+if [ -d "$HOME/.cargo" ]; then
     source "$HOME/.cargo/env"
     PATH=$PATH:$HOME/.cargo/bin
 fi
@@ -31,24 +31,27 @@ export PATH
 alias yust="just --justfile=\"\$HOME/.user.justfile\" --working-directory=\".\""
 alias grep="grep --color=auto"
 alias ls="ls -a --color=auto"
-if command -v bat &> /dev/null; then
+if _command_exists bat &> /dev/null; then
     alias cat="bat";
     alias rcat="bat --style=plain" # Raw cat
 fi
-if command -v eza &> /dev/null; then
+if _command_exists eza &> /dev/null; then
     alias ls="eza -hl --icons=auto"
     alias ll="eza -hla --icons=auto"
     alias l.="eza -hl -d .* --icons=auto 2> /dev/null || true" # Suppressing the error code when no matches are found, there's probably a more robust way to do this
 fi
-if command -v nvim &> /dev/null; then alias vim="nvim"; fi
-if command -v flatpak &> /dev/null; then
+if _command_exists nvim &> /dev/null; then alias vim="nvim"; fi
+if _command_exists flatpak &> /dev/null; then
     flatpak list --user --app | grep -q "dev.zed.Zed" && alias zed="flatpak run --user dev.zed.Zed"
 fi
 alias e="echo" # This is nice
+if _command_exists lazygit; then
+    alias lg="lazygit"
+fi
 
 ### Completion ###
 if _command_exists oh-my-posh; then
-    eval "$(oh-my-posh init bash --config $HOME/.config/ohmyposh/config.toml)"
+    eval "$(oh-my-posh init bash --config "$HOME/.config/ohmyposh/config.toml")"
 fi
 
 if _command_exists zoxide; then
