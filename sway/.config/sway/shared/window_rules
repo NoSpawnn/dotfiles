@@ -1,3 +1,5 @@
+# Great examples https://gitlab.com/that1communist/dotfiles/-/blob/master/.config/sway/modules/win-rules
+
 set {
     $popup floating enable; border pixel 1
     $workspace move container to workspace
