@@ -46,7 +46,7 @@ if command -v flatpak &> /dev/null; then
 fi
 alias e="echo" # This is nice
 
-# Init oh-my-posh
+### Completion ###
 if _command_exists oh-my-posh; then
     eval "$(oh-my-posh init bash --config $HOME/.config/ohmyposh/config.toml)"
 fi
