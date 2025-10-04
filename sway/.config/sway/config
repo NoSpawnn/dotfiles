@@ -13,7 +13,7 @@ set $right l
 # Default programs
 
 set $term ghostty
-set $menu wofi --show drun -c ~/.config/wofi/config
+set $menu wofi --show drun -c ~/.config/wofi/config -G
 
 # Include the other stuff
 include ./shared/*
