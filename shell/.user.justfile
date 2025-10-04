@@ -21,6 +21,11 @@ reboot-bios:
       exit 1
     fi
 
+# Reboot to windows if possible
+[group('System')]
+reboot-windows:
+    efibootmgr | grep "Windows Boot Manager" | sed -r 's/^Boot([[:digit:]]{4}).*/\1/' | xargs sudo efibootmgr --bootnext && systemctl reboot
+
 # Create and enter a new devpod with the specified options using podman
 [group('Dev')]
 devpod-new LANG="" DIR="." NAME="" LANG_VERSION="latest" SHELL="zsh" IDE="zed":
