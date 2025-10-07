@@ -2,13 +2,14 @@
 
 output DP-1 {
 	resolution 2560x1440@165Hz
-	scale 1
+    position 0,900
+    scale 1
 	bg ../walls/rainy-moon.png fill
 }
 
 output DP-2 {
 	resolution 2880x1800@120Hz
-	position 1440,0
+    position 560,0
 	scale 2
 	bg ../walls/cyberpunk-nostalgia.png fill
 }
