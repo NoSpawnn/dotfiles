@@ -20,12 +20,16 @@ if [ -d "$HOME/.cargo" ]; then
     PATH=$PATH:$HOME/.cargo/bin
 fi
 
+if [ -d "$HOME/.spicetify" ]; then
+    PATH=$PATH:$HOME/.spicetify
+fi
+
 if [[ "$DEVPOD" != "true" ]]; then
     export EDITOR=vim
     export SSH_AUTH_SOCK=$HOME/.var/app/com.bitwarden.desktop/data/.bitwarden-ssh-agent.sock
 fi
 
-if _command_exists fd; then 
+if _command_exists fd; then
     export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow'
 fi
 
@@ -53,7 +57,6 @@ if _command_exists lazygit; then
     alias lg="lazygit"
 fi
 
-### Completion ###
 if _command_exists oh-my-posh; then
     eval "$(oh-my-posh init bash --config "$HOME/.config/ohmyposh/config.toml")"
 fi
@@ -62,6 +65,7 @@ if _command_exists zoxide; then
     eval "$(zoxide init bash)"
 fi
 
+### Completion ###
 if _command_exists devpod; then
     source <(devpod completion bash)
 fi
