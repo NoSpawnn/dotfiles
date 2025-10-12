@@ -34,6 +34,7 @@ if _command_exists fd; then
 fi
 
 export PATH
+export HISTCONTROL=ignoreboth:erasedups
 
 ### Aliases ###
 alias yust="just --justfile=\"\$HOME/.user.justfile\" --working-directory=\".\""
