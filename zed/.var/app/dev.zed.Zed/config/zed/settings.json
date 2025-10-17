@@ -8,6 +8,14 @@
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
   "vim_mode": true,
+  "vim": {
+    "cursor_shape": {
+      "insert": "bar",
+      "normal": "block",
+      "visual": "block",
+      "replace": "underline"
+    }
+  },
   "relative_line_numbers": true,
   "inlay_hints": {
     "toggle_on_modifiers_press": {
