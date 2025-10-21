@@ -29,10 +29,14 @@ if [[ "$DEVPOD" != "true" ]]; then
     export SSH_AUTH_SOCK=$HOME/.var/app/com.bitwarden.desktop/data/.bitwarden-ssh-agent.sock
 fi
 
-if _command_exists fd; then
-    export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow'
-fi
 
+if _command_exists fzf; then
+    eval "$(fzf --bash)"
+
+    if _command_exists fd; then
+        export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow'
+    fi
+fi
 export PATH
 export HISTCONTROL=ignoreboth:erasedups
 
