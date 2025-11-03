@@ -29,6 +29,10 @@ if [[ "$DEVPOD" != "true" ]]; then
     export SSH_AUTH_SOCK=$HOME/.var/app/com.bitwarden.desktop/data/.bitwarden-ssh-agent.sock
 fi
 
+if _command_exists asdf; then
+    PATH="$PATH:${ASDF_DATA_DIR:-$HOME/.asdf}/shims"
+    source <(asdf completion bash)
+fi
 
 if _command_exists fzf; then
     eval "$(fzf --bash)"
