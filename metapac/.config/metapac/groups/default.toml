@@ -1,1 +1,0 @@
-dnf = ["awscli2", "kubectl", "opentofu", "terraform-ls", "just", "tealdeer", "steam-devices"]

@@ -1,4 +1,0 @@
-enabled_backends = ["dnf", "flatpak"]
-
-[flatpak]
-systemwide = false
