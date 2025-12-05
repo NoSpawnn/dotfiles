@@ -59,7 +59,7 @@ if _command_exists eza &> /dev/null; then
 fi
 if _command_exists nvim &> /dev/null; then alias vim="nvim"; fi
 if _command_exists flatpak &> /dev/null; then
-    flatpak list --user --app | grep -q "dev.zed.Zed" && alias zed="flatpak run --user dev.zed.Zed"
+    flatpak list --app | grep -q "dev.zed.Zed" && alias zed="flatpak run dev.zed.Zed"
 fi
 alias e="echo" # This is nice
 if _command_exists lazygit; then
@@ -90,3 +90,5 @@ fi
 if _command_exists eksctl; then
     source <(eksctl completion bash)
 fi
+
+export PATH=$PATH:/home/red/.spicetify
