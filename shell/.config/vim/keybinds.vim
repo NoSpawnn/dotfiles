@@ -1,3 +1,3 @@
 let mapleader = " "
 
-nnoremap <leader>cd :Explore<CR>
+nnoremap <leader>cd :Explore<CR> ; Open netrw
