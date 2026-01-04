@@ -261,25 +261,13 @@ layout {
 // which may be more convenient to use.
 // See the binds section below for more spawn examples.
 
-// This line starts waybar, a commonly used bar for Wayland compositors.
 spawn-at-startup "qs" "-c" "noctalia-shell"
 spawn-sh-at-startup "exec swayidle -w timeout 300 \"swaylock --color 000000\" timeout 600 'swaymsg \"output * power off\"' resume 'swaymsg \"output * power on\"' before-sleep \"swaylock --color 000000\""
-spawn-sh-at-startup "flatpak run com.bitwarden.desktop" // Lauch to tray
-
-// To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
-// spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
+spawn-sh-at-startup "flatpak run com.bitwarden.desktop" // Launch to tray
 
 hotkey-overlay {
-    // Uncomment this line to disable the "Important Hotkeys" pop-up at startup.
-    // skip-at-startup
+    skip-at-startup
 }
-
-// Uncomment this line to ask the clients to omit their client-side decorations if possible.
-// If the client will specifically ask for CSD, the request will be honored.
-// Additionally, clients will be informed that they are tiled, removing some client-side rounded corners.
-// This option will also fix border/focus ring drawing behind some semitransparent windows.
-// After enabling or disabling this, you need to restart the apps for this to take effect.
-// prefer-no-csd
 
 // You can change the path where screenshots are saved.
 // A ~ at the front will be expanded to the home directory.
@@ -314,14 +302,19 @@ window-rule {
     default-column-width {}
 }
 
-// Open the Firefox picture-in-picture player as floating by default.
+// Floating
 window-rule {
-    // This app-id regular expression will work for both:
-    // - host Firefox (app-id is "firefox")
-    // - Flatpak Firefox (app-id is "org.mozilla.firefox")
+    open-floating true
+
     match title="^Picture-in-Picture$"
     match title="^Steam Settings$"
-    open-floating true
+}
+
+// Avoid focus
+window-rule {
+    open-focused false
+
+    match title="^Sign in to Steam$" // steam splash
 }
 
 // Force steam notification toast to bottom right
@@ -331,7 +324,7 @@ window-rule {
     default-floating-position x=0 y=0 relative-to="bottom-right"
 }
 
-// Fullscreen games
+// Fullscreen games on main monitor
 window-rule {
     open-fullscreen true
     open-on-output "DP-1"
