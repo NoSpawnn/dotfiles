@@ -70,6 +70,10 @@ if _command_exists oh-my-posh; then
     eval "$(oh-my-posh init bash --config "$HOME/.config/ohmyposh/config.toml")"
 fi
 
+if _command_exists starship; then
+    eval "$(starship init bash)"
+fi
+
 if _command_exists zoxide; then
     eval "$(zoxide init bash)"
 fi
