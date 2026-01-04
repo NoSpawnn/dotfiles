@@ -86,14 +86,16 @@ input {
 // https://yalter.github.io/niri/Configuration:-Outputs
 // Remember to uncomment the node by removing "/-"!
 
-output "DP-1" {
+// Desktop primary
+output "Dell Inc. DELL S2721DGF C626R83" {
     mode "2560x1440@165.080"
     position x=0 y=900
     scale 1.0
 }
 spawn-sh-at-startup "swaybg -o 'DP-1' -i ~/.dotfiles/walls/rainy-moon.png"
 
-output "DP-2" {
+// Desktop secondary
+output "PNP(YMK) EM160TP-A 0x00000001" {
     mode "2880x1800@120.001"
     position x=560 y=0
     scale 2.0
@@ -256,11 +258,6 @@ layout {
     }
 }
 
-// Add lines like this to spawn processes at startup.
-// Note that running niri as a session supports xdg-desktop-autostart,
-// which may be more convenient to use.
-// See the binds section below for more spawn examples.
-
 spawn-at-startup "qs" "-c" "noctalia-shell"
 spawn-sh-at-startup "exec swayidle -w timeout 300 \"swaylock --color 000000\" timeout 600 'swaymsg \"output * power off\"' resume 'swaymsg \"output * power on\"' before-sleep \"swaylock --color 000000\""
 spawn-sh-at-startup "flatpak run com.bitwarden.desktop" // Launch to tray
@@ -269,38 +266,16 @@ hotkey-overlay {
     skip-at-startup
 }
 
-// You can change the path where screenshots are saved.
-// A ~ at the front will be expanded to the home directory.
 // The path is formatted with strftime(3) to give you the screenshot date and time.
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 
-// You can also set this to null to disable saving screenshots to disk.
-// screenshot-path null
-
-// Animation settings.
-// The wiki explains how to configure individual animations:
 // https://yalter.github.io/niri/Configuration:-Animations
 animations {
-    // Uncomment to turn off all animations.
     // off
-
-    // Slow down all animations by this factor. Values below 1 speed them up instead.
-    // slowdown 3.0
+    // slowdown 0.75
 }
 
-// Window rules let you adjust behavior for individual windows.
-// Find more information on the wiki:
 // https://yalter.github.io/niri/Configuration:-Window-Rules
-
-// Work around WezTerm's initial configure bug
-// by setting an empty default-column-width.
-window-rule {
-    // This regular expression is intentionally made as specific as possible,
-    // since this is the default config, and we want no false positives.
-    // You can get away with just app-id="wezterm" if you want.
-    match app-id=r#"^org\.wezfurlong\.wezterm$"#
-    default-column-width {}
-}
 
 // Floating
 window-rule {
@@ -327,25 +302,19 @@ window-rule {
 // Fullscreen games on main monitor
 window-rule {
     open-fullscreen true
-    open-on-output "DP-1"
+    open-on-output "Dell Inc. DELL S2721DGF C626R83"
 
     match app-id="^steam_app_[0-9]+$" // any steam game
 }
 
-// Example: block out two password managers from screen capture.
-// (This example rule is commented out with a "/-" in front.)
-/-window-rule {
-    match app-id=r#"^org\.keepassxc\.KeePassXC$"#
-    match app-id=r#"^org\.gnome\.World\.Secrets$"#
-
+window-rule {
     block-out-from "screen-capture"
-
     // Use this instead if you want them visible on third-party screenshot tools.
     // block-out-from "screencast"
+
+    match title="^Bitwarden$"
 }
 
-// Example: enable rounded corners for all windows.
-// (This example rule is commented out with a "/-" in front.)
 window-rule {
     geometry-corner-radius 12
     clip-to-geometry true
