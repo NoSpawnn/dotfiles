@@ -9,6 +9,7 @@
 prefer-no-csd
 
 cursor {
+    hide-when-typing
     xcursor-theme "Twilight-cursors"
     xcursor-size 26
 }
@@ -281,8 +282,9 @@ animations {
 window-rule {
     open-floating true
 
-    match title="^Picture-in-Picture$"
-    match title="^Steam Settings$"
+    match app-id="^steam$" title="^Picture-in-Picture$"
+    match app-id="^steam$" title="^Steam Settings$"
+    match app-id="^steam$" title="^Friends List$"
 }
 
 // Avoid focus
