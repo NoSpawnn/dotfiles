@@ -106,7 +106,7 @@ layout {
     }
 }
 
-spawn-at-startup "qs" "-c" "noctalia-shell"
+spawn-at-startup "noctalia-shell"
 spawn-sh-at-startup "exec swayidle -w timeout 300 \"swaylock --color 000000\" timeout 600 'swaymsg \"output * power off\"' resume 'swaymsg \"output * power on\"' before-sleep \"swaylock --color 000000\""
 spawn-sh-at-startup "flatpak run com.bitwarden.desktop" // Launch to tray
 
