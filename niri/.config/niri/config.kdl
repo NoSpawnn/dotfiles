@@ -173,10 +173,10 @@ window-rule {
 }
 
 window-rule {
-   open-on-workspace "gaming"
+    open-on-workspace "gaming"
     open-maximized true
 
-   match app-id="^steam$"
+    match app-id="^steam$"
 }
 
 window-rule {
