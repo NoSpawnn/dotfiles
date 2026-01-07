@@ -167,12 +167,14 @@ prefer-no-csd
 
 window-rule {
     open-on-workspace "web"
+    open-maximized true
 
     match app-id="app.zen_browser.zen"
 }
 
 window-rule {
    open-on-workspace "gaming"
+    open-maximized true
 
    match app-id="^steam$"
 }
