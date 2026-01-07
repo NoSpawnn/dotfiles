@@ -95,4 +95,8 @@ if _command_exists eksctl; then
     source <(eksctl completion bash)
 fi
 
+if [[ -f /etc/profiles/per-user/$USER/etc/profile.d/hm-session-vars.sh ]]; then
+    source /etc/profiles/per-user/$USER/etc/profile.d/hm-session-vars.sh
+fi
+
 export PATH=$PATH:/home/red/.spicetify
