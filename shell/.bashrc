@@ -13,6 +13,7 @@ if [ -f /etc/bashrc ]; then
 fi
 
 ### Envs/Path/Other exports ###
+
 PATH="$PATH:$HOME/.local/bin"
 
 if [ -d "$HOME/.cargo" ]; then
@@ -45,6 +46,7 @@ export PATH
 export HISTCONTROL=ignoreboth:erasedups
 
 ### Aliases ###
+
 alias yust="just --justfile=\"\$HOME/.user.justfile\" --working-directory=\".\""
 alias grep="grep --color=auto"
 alias ls="ls -a --color=auto"
@@ -79,6 +81,7 @@ if _command_exists zoxide; then
 fi
 
 ### Completion ###
+ 
 if _command_exists devpod; then
     source <(devpod completion bash)
 fi
