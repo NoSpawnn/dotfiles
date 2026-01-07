@@ -219,8 +219,10 @@ window-rule {
 window-rule {
     open-on-workspace "gaming"
     open-fullscreen true
+    open-floating false
 
     match app-id="^steam_app_[0-9]+$" // any steam game
+    match app-id="^tf_linux64$" // Team Fortress 2 linux native
 }
 
 window-rule {
