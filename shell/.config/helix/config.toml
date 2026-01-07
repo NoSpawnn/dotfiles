@@ -11,3 +11,9 @@ select = "underline"
 
 [editor.file-picker]
 hidden = false
+
+[editor.statusline]
+left = ["file-type", "file-base-name", "spinner", "diagnostics"]
+center = []
+right = ["file-modification-indicator", "version-control", "mode", "position"]
+separator = " |"
