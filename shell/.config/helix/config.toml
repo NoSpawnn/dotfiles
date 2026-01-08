@@ -17,3 +17,13 @@ left = ["file-type", "file-base-name", "spinner", "diagnostics"]
 center = []
 right = ["file-modification-indicator", "version-control", "mode", "position"]
 separator = " |"
+
+[keys.normal]
+C-g = [
+    ":write-all",
+    ":new",
+    ":insert-output lazygit",
+    ":buffer-close!",
+    ":redraw",
+    ":reload-all"
+]
