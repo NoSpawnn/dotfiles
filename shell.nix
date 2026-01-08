@@ -7,4 +7,8 @@ pkgs.mkShellNoCC {
     yaml-language-server
     bash-language-server
   ];
+
+  shellHook = ''
+      git status
+    '';
 }
