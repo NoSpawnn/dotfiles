@@ -3,6 +3,7 @@ theme = "snazzy-translucent"
 [editor]
 bufferline = "multiple"
 line-number = "relative"
+end-of-line-diagnostics = "hint"
 
 [editor.cursor-shape]
 insert = "bar"
