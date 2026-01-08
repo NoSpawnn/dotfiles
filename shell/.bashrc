@@ -34,6 +34,8 @@ if _command_exists fzf; then
     if _command_exists fd; then export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow'; fi
 fi
 
+if _command_exists direnv; then eval "$(direnv hook bash)"; fi
+
 # TODO: there should only ever be one of these...
 if _command_exists oh-my-posh; then eval "$(oh-my-posh init bash --config "$HOME/.config/ohmyposh/config.toml")"; fi
 if _command_exists starship; then eval "$(starship init bash)"; fi
