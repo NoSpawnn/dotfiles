@@ -27,3 +27,6 @@ C-g = [
     ":redraw",
     ":reload-all"
 ]
+
+x = "select_line_below"
+X = "select_line_above"
