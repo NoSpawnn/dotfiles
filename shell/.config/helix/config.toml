@@ -25,6 +25,7 @@ separator = " |"
 [keys.normal]
 x = "select_line_below"
 X = "select_line_above"
+Y = "yank_main_selection_to_clipboard"
 
 [keys.normal.space]
 # lazygit
