@@ -1,0 +1,43 @@
+theme = "snazzy-translucent"
+
+[editor]
+bufferline = "multiple"
+line-number = "relative"
+end-of-line-diagnostics = "hint"
+
+[editor.inline-diagnostics]
+cursor-line = "error"
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.file-picker]
+hidden = false
+
+[editor.statusline]
+left = ["file-type", "file-base-name", "spinner", "diagnostics"]
+center = []
+right = ["file-modification-indicator", "version-control", "mode", "position"]
+separator = " |"
+
+[keys.normal]
+x = "select_line_below"
+X = "select_line_above"
+Y = "yank_main_selection_to_clipboard"
+
+[keys.normal.space]
+# lazygit
+l = { g = [
+  ":write-all",
+  ":new",
+  ":insert-output lazygit",
+  ":buffer-close!",
+  ":redraw",
+  ":reload-all"
+] }
+
+# zellij + yazi: https://yazi-rs.github.io/docs/tips/#helix-with-zellij
+y = ":sh zellij run -n Yazi -c -f -x 10%% -y 10%% --width 80%% --height 80%% -- bash ~/.config/helix/yazi-picker.sh open %{buffer_name}"
+
