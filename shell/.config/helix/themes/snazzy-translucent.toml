@@ -1,4 +1,0 @@
-# https://www.reddit.com/r/HelixEditor/comments/11f6scu/transparent_background/ 
-
-inherits = "snazzy"
-"ui.background" = {}
