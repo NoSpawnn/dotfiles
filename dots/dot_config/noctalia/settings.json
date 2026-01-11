@@ -531,7 +531,7 @@
         "wifiDetailsViewMode": "grid"
     },
     "wallpaper": {
-        "directory": "/home/red/.dotfiles/walls",
+        "directory": "~/.config/walls",
         "enableMultiMonitorDirectories": false,
         "enabled": true,
         "fillColor": "#000000",
