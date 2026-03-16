@@ -1,0 +1,13 @@
+[Appearance]
+Skin=materia-dark
+SkinInstalledWithKns=true
+
+[Desktop Entry]
+DefaultProfile=Profile 1.profile
+
+[Dialogs]
+FirstRun=false
+
+[Window]
+Height=60
+Screen=1
