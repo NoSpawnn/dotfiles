@@ -57,7 +57,7 @@ input {
 //
 // Displays config
 // https://yalter.github.io/niri/Configuration:-Outputs
-// 
+//
 
 spawn-sh-at-startup "dconf write /org/gnome/desktop/interface/color-scheme '\"prefer-dark\"'"
 
@@ -85,7 +85,7 @@ output "Chimei Innolux Corporation 0x14E5 Unknown" {
 //
 // Layout config
 // https://yalter.github.io/niri/Configuration:-Layout
-// 
+//
 
 layout {
     gaps 8
@@ -131,7 +131,7 @@ animations {
 
 //
 // Workspaces
-// 
+//
 
 spawn-sh-at-startup "flatpak run app.zen_browser.zen"
 workspace "web" {
@@ -150,7 +150,7 @@ workspace "chat" {
 //
 // Scratchpad
 // https://github.com/gvolpe/niri-scratchpad
-// 
+//
 
 workspace "scratch"
 
@@ -167,7 +167,7 @@ window-rule {
 //
 // Window rules
 // https://yalter.github.io/niri/Configuration:-Window-Rules
-// 
+//
 
 prefer-no-csd
 
