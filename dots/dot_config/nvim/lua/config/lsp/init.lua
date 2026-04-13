@@ -1,6 +1,8 @@
 require("config.lsp.luals")
 require("config.lsp.rust-analyzer")
 
+vim.cmd([[ set completeopt+=menuone,noselect,popup ]])
+
 -- https://www.youtube.com/watch?v=w7i4amO_zaE / https://lsp-zero.netlify.app/blog/theprimeagens-config-from-2022.html
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("user_lsp_attach", { clear = true }),
@@ -43,4 +45,18 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	end,
 })
 
-vim.cmd([[ set completeopt+=menuone,noselect,popup ]])
+-- Show diagnostics in a floating window for the current cursor position
+vim.o.updatetime = 250 -- CursorHold delay in ms
+vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+	callback = function()
+		local opts = {
+			focusable = false,
+			close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+			border = "single",
+			source = "if_many",
+			prefix = "",
+			scope = "cursor",
+		}
+		vim.diagnostic.open_float(nil, opts)
+	end,
+})
