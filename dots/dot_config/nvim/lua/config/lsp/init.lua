@@ -5,6 +5,7 @@ require("config.lsp.rust-analyzer")
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("user_lsp_attach", { clear = true }),
 	callback = function(event)
+		local client = assert(vim.lsp.get_client_by_id(event.data.client_id))
 		local opts = { buffer = event.buf }
 
 		vim.keymap.set("n", "gd", function()
@@ -37,5 +38,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		vim.keymap.set("i", "<C-h>", function()
 			vim.lsp.buf.signature_help()
 		end, opts)
+
+		vim.lsp.completion.enable(true, client.id, event.buf, { autotrigger = true })
 	end,
 })
+
+vim.cmd([[ set completeopt+=menuone,noselect,popup ]])
