@@ -8,7 +8,7 @@
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
   "terminal": {
-    "dock": "bottom"
+    "dock": "bottom",
   },
   "disable_ai": true,
   "icon_theme": "Material Icon Theme",
@@ -16,13 +16,25 @@
     "tinymist": {
       "settings": {
         "exportPdf": "onSave",
-        "outputPath": "$root/$name"
-      }
-    }
+        "outputPath": "$root/$name",
+      },
+    },
   },
+  "ssh_connections": [
+    {
+      "host": "spawnpoint",
+      "username": "N",
+      "args": [],
+      "projects": [
+        {
+          "paths": ["/home/N"],
+        },
+      ],
+    },
+  ],
   "lsp_document_colors": "inlay",
   "outline_panel": {
-    "dock": "right"
+    "dock": "right",
   },
   "vim_mode": true,
   "vim": {
@@ -30,25 +42,25 @@
       "insert": "bar",
       "normal": "block",
       "visual": "block",
-      "replace": "underline"
-    }
+      "replace": "underline",
+    },
   },
   "relative_line_numbers": "enabled",
   "inlay_hints": {
     "show_background": true,
     "toggle_on_modifiers_press": {
       "control": true,
-      "alt": true
-    }
+      "alt": true,
+    },
   },
   "features": {
-    "edit_prediction_provider": "none"
+    "edit_prediction_provider": "none",
   },
   "buffer_font_features": {
-    "calt": false
+    "calt": false,
   },
-  "ui_font_size": 16,
-  "buffer_font_size": 15,
+  "ui_font_size": 14.0,
+  "buffer_font_size": 14.0,
   "theme": "Fleet Dark Purple",
   "buffer_font_family": "0xProto Nerd Font Mono",
   "auto_install_extensions": {
@@ -60,19 +72,19 @@
     "just": true,
     "marksman": true,
     "fleet-themes": true,
-    "dockerfile": true
+    "dockerfile": true,
   },
   "languages": {
     "Markdown": {
       "tab_size": 4,
       "auto_indent": false,
-      "soft_wrap": "editor_width"
+      "soft_wrap": "editor_width",
     },
     "YAML": {
-      "tab_size": 2
-    }
+      "tab_size": 2,
+    },
   },
   "file_types": {
-    "Dockerfile": ["containerfile", "*.containerfile", "Dockerfile.*"]
-  }
+    "Dockerfile": ["containerfile", "*.containerfile", "Dockerfile.*"],
+  },
 }

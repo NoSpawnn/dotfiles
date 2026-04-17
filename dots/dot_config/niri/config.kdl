@@ -186,6 +186,11 @@ window-rule {
 }
 
 window-rule {
+    open-floating true
+    match app-id="^Godot$"
+}
+
+window-rule {
    open-on-workspace "chat"
 
    match app-id="^vesktop$"
@@ -233,8 +238,14 @@ window-rule {
 }
 
 window-rule {
+    match app-id="^Godot$"
+    exclude title=".*Godot Engine$"
+
+    open-floating true
+}
+
+window-rule {
     block-out-from "screen-capture"
-    // Use this instead if you want them visible on third-party screenshot tools.
     // block-out-from "screencast"
 
     match title="^Bitwarden$"
