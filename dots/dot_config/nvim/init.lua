@@ -17,39 +17,37 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-
 -- Opts
-vim.g.mapleader = " "
-vim.g.maplocalleader = "\\"
-
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 4
-vim.opt.expandtab = true
-vim.opt.autoindent = true
-vim.opt.smartindent = true
-vim.opt.smarttab = true
-vim.opt.list = true
-vim.opt.backspace = "indent,eol,start"
-vim.opt.listchars = "eol: ,tab:> ,trail:•,extends:>,precedes:<"
-
-vim.opt.number = true
+vim.g.mapleader        = " "
+vim.g.maplocalleader   = "\\"
+vim.opt.tabstop        = 4
+vim.opt.softtabstop    = 4
+vim.opt.shiftwidth     = 4
+vim.opt.expandtab      = true
+vim.opt.autoindent     = true
+vim.opt.smartindent    = true
+vim.opt.smarttab       = true
+vim.opt.list           = true
+vim.opt.backspace      = "indent,eol,start"
+vim.opt.listchars      = "eol: ,tab:> ,trail:•,extends:>,precedes:<"
+vim.opt.number         = true
 vim.opt.relativenumber = true
-vim.opt.cursorline = true
-vim.opt.signcolumn = "yes:1"
-vim.opt.scrolloff = 8
-vim.opt.showcmd = true
-vim.opt.swapfile = false
-vim.opt.backup = false
-vim.opt.undodir = vim.fn.stdpath("data") .. "/undodir"
-vim.opt.undofile = true
-vim.opt.clipboard = "unnamedplus"
-vim.opt.hlsearch = true
-vim.opt.incsearch = true
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
-vim.opt.termguicolors = true
-vim.opt.showmode = true
+vim.opt.cursorline     = true
+vim.opt.signcolumn     = "yes:1"
+vim.opt.scrolloff      = 8
+vim.opt.showcmd        = true
+vim.opt.swapfile       = false
+vim.opt.backup         = false
+vim.opt.undodir        = vim.fn.stdpath("data") .. "/undodir"
+vim.opt.undofile       = true
+vim.opt.clipboard      = "unnamedplus"
+vim.opt.hlsearch       = true
+vim.opt.incsearch      = true
+vim.opt.ignorecase     = true
+vim.opt.smartcase      = true
+vim.opt.termguicolors  = true
+vim.opt.showmode       = true
+
 vim.cmd([[autocmd FileType * set formatoptions-=ro]])
 
 -- Lazy/plugins setup
@@ -73,6 +71,22 @@ require("lazy").setup({
                 vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Telescope buffers" })
                 vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Telescope help tags" })
             end,
+        },
+        {
+            "stevearc/oil.nvim",
+            dependencies = { "nvim-tree/nvim-web-devicons" },
+            opts = {
+                columns = {
+                    "icon",
+                    "permissions",
+                    "size",
+                    "mtime",
+                },
+                view_options = {
+                    show_hidden = true,
+                }
+            },
+            lazy = false
         },
         {
             "folke/which-key.nvim",
@@ -129,11 +143,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
                 vim.lsp.buf.format({ bufnr = ev.buf, id = client.id })
             end, { desc = "Format document" })
         end
+
         if client:supports_method("textDocument/completion") then
             local chars = {}
-            for i = 32, 126 do
-                table.insert(chars, string.char(i))
-            end
+            for i = 32, 126 do table.insert(chars, string.char(i)) end
             client.server_capabilities.completionProvider.triggerCharacters = chars
             vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
         end
