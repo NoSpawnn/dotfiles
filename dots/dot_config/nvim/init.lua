@@ -58,8 +58,13 @@ require("lazy").setup({
         {
             "nvim-telescope/telescope.nvim",
             version = "*",
-            dependencies = {
-                "nvim-lua/plenary.nvim",
+            dependencies = { "nvim-lua/plenary.nvim" },
+            opts = {
+                pickers = {
+                    find_files = {
+                        follow = true
+                    }
+                }
             },
             init = function()
                 local builtin = require("telescope.builtin")
@@ -72,21 +77,6 @@ require("lazy").setup({
         {
             "folke/which-key.nvim",
             event = "VeryLazy",
-            keys = {
-                {
-                    "<leader>?",
-                    function()
-                        require("which-key").show({ global = false })
-                    end,
-                    desc = "Buffer Local Keymaps (which-key)",
-                },
-            },
-        },
-        {
-            "junegunn/vim-easy-align"
-        },
-        {
-            "nyoom-engineering/oxocarbon.nvim"
         },
         {
             "nvim-lualine/lualine.nvim",
@@ -97,15 +87,28 @@ require("lazy").setup({
             "windwp/nvim-autopairs",
             event = "InsertEnter",
             config = true
-        }
+        },
+        {
+            "nyoom-engineering/oxocarbon.nvim",
+            config = function() vim.cmd("colorscheme oxocarbon") end
+        },
+        {
+            "mason-org/mason-lspconfig.nvim",
+            config = true,
+            dependencies = {
+                { "mason-org/mason.nvim", config = true },
+                "neovim/nvim-lspconfig",
+            },
+        },
+        { "nospawnn/align.nvim" },
+        -- { dir = "~/Documents/dev/align.nvim" }
     },
     checker = { enabled = true },
 }
 )
 
-vim.cmd("colorscheme oxocarbon")
 
--- Lsp
+-- Lsp config
 vim.cmd [[set completeopt+=menuone,noselect,popup]]
 vim.api.nvim_create_autocmd("LspAttach", {
     group = vim.api.nvim_create_augroup("my.lsp", {}),
@@ -135,25 +138,5 @@ vim.api.nvim_create_autocmd("LspAttach", {
             vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
         end
     end,
-q)
-
-vim.lsp.config["lua_ls"] = {
-    cmd = { "lua-language-server" },
-    filetypes = { "lua" },
-    root_markers = { { ".luarc.json", ".luarc.jsonc" }, ".git" },
-    settings = {
-        Lua = {
-            runtime = {
-                version = "LuaJIT",
-            },
-        },
-    },
 }
-vim.lsp.enable("lua_ls")
-
-vim.lsp.config["clangd"] = {
-    cmd = { "clangd" },
-    filetypes = { "c", "cpp" },
-    root_markers = { { "main.c", "main.cpp", "Makefile" }, ".git" },
-}
-vim.lsp.enable("clangd")
+)
