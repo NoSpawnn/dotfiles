@@ -1,6 +1,6 @@
 # NoSpawnn/dotfiles
 
-## Dotfiles managed using [twpayne/chezmoi](https://github.com/twpayne/chezmoi)
+## Dotfiles managed using [GNU Stow](https://www.gnu.org/software/stow/)
 
 ## References, Inspiration, etc
 
