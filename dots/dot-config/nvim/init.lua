@@ -24,8 +24,8 @@ require("lazy").setup({
     spec = {
         { import = "plugins" },
         { import = "plugins.lsp" },
-        checker = { enabled = true },
-    }
+    },
+    checker = { enabled = true },
 })
 
 -- I'm not really sure the best place to put this for ease of access...
