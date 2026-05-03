@@ -4,7 +4,7 @@ return {
         local to_enable = {
             "clangd",
             "lua_ls",
-            "rst_analyzer",
+            "rust_analyzer",
             "nil_ls"
         }
 
@@ -12,7 +12,8 @@ return {
         for _, ls in ipairs(to_enable) do
             local path = configs_path .. "/" .. ls .. ".lua"
             if not vim.loop.fs_stat(path) then
-                vim.notify(("nvim-lspconfig: bad server: '%s'. see %s for valid servers"):format(ls, configs_path), vim.log.levels.WARN)
+                vim.notify(("nvim-lspconfig: bad server: '%s'. see %s for valid servers"):format(ls, configs_path),
+                    vim.log.levels.WARN)
             end
         end
 
