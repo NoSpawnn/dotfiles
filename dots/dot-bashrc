@@ -4,7 +4,7 @@
 ### Utility functions ###
 
 _command_exists() {
-    command -v "$1" &> /dev/null
+	command -v "$1" &>/dev/null
 }
 
 ### Source global definitions ###
@@ -16,22 +16,22 @@ if [ -f /etc/bashrc ]; then source /etc/bashrc; fi
 PATH="$PATH:$HOME/.local/bin"
 
 if [ -f "$HOME/.cargo/env" ]; then
-    source "$HOME/.cargo/env"
-    PATH=$PATH:$HOME/.cargo/bin
+	source "$HOME/.cargo/env"
+	PATH=$PATH:$HOME/.cargo/bin
 fi
 
 if [ -d "$HOME/.spicetify" ]; then
-    PATH=$PATH:$HOME/.spicetify
+	PATH=$PATH:$HOME/.spicetify
 fi
 
 if _command_exists asdf; then
-    PATH="$PATH:${ASDF_DATA_DIR:-$HOME/.asdf}/shims"
-    source <(asdf completion bash)
+	PATH="$PATH:${ASDF_DATA_DIR:-$HOME/.asdf}/shims"
+	source <(asdf completion bash)
 fi
 
 if _command_exists fzf; then
-    eval "$(fzf --bash)"
-    if _command_exists fd; then export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow'; fi
+	eval "$(fzf --bash)"
+	if _command_exists fd; then export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow'; fi
 fi
 
 if _command_exists direnv; then eval "$(direnv hook bash)"; fi
@@ -54,21 +54,23 @@ alias grep="grep --color=auto"
 if _command_exists lazygit; then alias lg="lazygit"; fi
 if _command_exists zellij; then alias zj="zellij"; fi
 if _command_exists zoxide; then eval "$(zoxide init bash)"; fi
-if _command_exists eza &> /dev/null; then
-    alias ls="eza -hl --icons=auto"
-    alias ll="eza -hla --icons=auto"
-    alias l.="eza -hl -d .* --icons=auto 2> /dev/null || true" # Suppressing the error code when no matches are found, there's probably a more robust way to do this
+if _command_exists eza &>/dev/null; then
+	alias ls="eza -hl --icons=auto"
+	alias ll="eza -hla --icons=auto"
+	alias l.="eza -hl -d .* --icons=auto 2> /dev/null || true" # Suppressing the error code when no matches are found, there's probably a more robust way to do this
 fi
 
 ### Completion ###
- 
+
 if _command_exists devpod; then source <(devpod completion bash); fi
 if _command_exists kubectl; then source <(kubectl completion bash); fi
 if _command_exists aws && _command_exists aws_completer; then complete -C '$(which aws_completer)' aws; fi
 if _command_exists eksctl; then source <(eksctl completion bash); fi
 if [[ -f /etc/profiles/per-user/$USER/etc/profile.d/hm-session-vars.sh ]]; then
-    source /etc/profiles/per-user/$USER/etc/profile.d/hm-session-vars.sh
+	source /etc/profiles/per-user/$USER/etc/profile.d/hm-session-vars.sh
 fi
+
+### Keybinds ###
 
 bind '"\e[3~": delete-char'
 # Ctrl+Arrow keys

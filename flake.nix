@@ -30,6 +30,7 @@
             packages = with pkgs; [
               shellcheck
               stow
+              shfmt
               self.formatter.${system}
             ];
           };
