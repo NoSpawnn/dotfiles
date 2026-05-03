@@ -10,6 +10,8 @@ vim.api.nvim_create_user_command("Format", function(args)
   require("conform").format({ async = true, lsp_format = "fallback", range = range })
 end, { range = true })
 
+vim.keymap.set("n", "<leader>bf", "<cmd>Format<CR>", { desc = "Format document" })
+
 return {
   'stevearc/conform.nvim',
   opts = {},
