@@ -31,6 +31,11 @@
               shellcheck
               stow
               shfmt
+
+              lua-language-server
+              stylua
+
+              nil
               self.formatter.${system}
             ];
           };
