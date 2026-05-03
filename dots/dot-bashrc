@@ -7,6 +7,35 @@ _command_exists() {
 	command -v "$1" &>/dev/null
 }
 
+### Custom commands/helpers ###
+
+init_dev_flake() {
+	# "https://github.com/the-nix-way/dev-templates"
+
+	local lang=$1
+
+	if [ -z "$lang" ]; then
+		echo "Usage: init_dev_flake <language>" >&2
+		return 1
+	fi
+
+	local repo="https://github.com/the-nix-way/dev-templates"
+	local cache_dest="${HOME}/.cache/flake-dev-templates"
+	if [[ -d "$cache_dest" ]]; then
+		git -C "$cache_dest" fetch --prune
+	else
+		git clone --depth 1 "$repo" "$cache_dest"
+	fi
+
+	echo "Try initialising dev flake for $lang..."
+	if nix flake init -t "path:${cache_dest}#${lang}"; then
+		echo "Okie!"
+		return 0
+	else
+		return 1
+	fi
+}
+
 ### Source global definitions ###
 
 if [ -f /etc/bashrc ]; then source /etc/bashrc; fi
