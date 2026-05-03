@@ -1,6 +1,9 @@
 local vim = vim
 
--- Bootstrap lazy.nvim
+-- General editor config
+require("opts")
+
+-- Lazy and plugins setup
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
     local lazyrepo = "https://github.com/folke/lazy.nvim.git"
@@ -17,159 +20,13 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- Opts
-vim.g.mapleader        = " "
-vim.g.maplocalleader   = "\\"
-vim.opt.tabstop        = 4
-vim.opt.softtabstop    = 4
-vim.opt.shiftwidth     = 4
-vim.opt.expandtab      = true
-vim.opt.autoindent     = true
-vim.opt.smartindent    = true
-vim.opt.smarttab       = true
-vim.opt.list           = true
-vim.opt.backspace      = "indent,eol,start"
-vim.opt.listchars      = "eol: ,tab:> ,trail:•,extends:>,precedes:<"
-vim.opt.number         = true
-vim.opt.relativenumber = true
-vim.opt.cursorline     = true
-vim.opt.signcolumn     = "yes:1"
-vim.opt.scrolloff      = 8
-vim.opt.showcmd        = true
-vim.opt.swapfile       = false
-vim.opt.backup         = false
-vim.opt.undodir        = vim.fn.stdpath("data") .. "/undodir"
-vim.opt.undofile       = true
-vim.opt.clipboard      = "unnamedplus"
-vim.opt.hlsearch       = true
-vim.opt.incsearch      = true
-vim.opt.ignorecase     = true
-vim.opt.smartcase      = true
-vim.opt.termguicolors  = true
-vim.opt.showmode       = true
-
-vim.cmd([[autocmd FileType * set formatoptions-=ro]])
-
--- Lazy/plugins setup
 require("lazy").setup({
     spec = {
-        {
-            "nvim-telescope/telescope.nvim",
-            version = "*",
-            dependencies = { "nvim-lua/plenary.nvim" },
-            opts = {
-                pickers = {
-                    find_files = {
-                        follow = true
-                    }
-                }
-            },
-            init = function()
-                local builtin = require("telescope.builtin")
-                vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Telescope find files" })
-                vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Telescope live grep" })
-                vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Telescope buffers" })
-                vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Telescope help tags" })
-            end,
-        },
-        {
-            "stevearc/oil.nvim",
-            dependencies = { "nvim-tree/nvim-web-devicons" },
-            opts = {
-                columns = {
-                    "icon",
-                    "permissions",
-                    "size",
-                    "mtime",
-                },
-                view_options = {
-                    show_hidden = true,
-                }
-            },
-            lazy = false
-        },
-        {
-            "folke/which-key.nvim",
-            event = "VeryLazy",
-        },
-        {
-            "nvim-lualine/lualine.nvim",
-            dependencies = { "nvim-tree/nvim-web-devicons" },
-            config = true
-        },
-        {
-            "windwp/nvim-autopairs",
-            event = "InsertEnter",
-            config = true
-        },
-        {
-            "nyoom-engineering/oxocarbon.nvim",
-            config = function() vim.cmd("colorscheme oxocarbon") end
-        },
-        {
-            "mason-org/mason-lspconfig.nvim",
-            config = true,
-            dependencies = {
-                { "mason-org/mason.nvim", config = true },
-                "neovim/nvim-lspconfig",
-            },
-        },
-        { "nospawnn/align.nvim" },
-        {
-            "ej-shafran/compile-mode.nvim",
-            version = "*",
-            dependencies = { "nvim-lua/plenary.nvim", },
-            config = function()
-                vim.g.compile_mode = {
-                    bang_expansion = true,
-                    default_command = {
-                        rust = "cargo run"
-                    },
-                    error_regexp_table = {
-                        rustc = {
-                            regex = [[^\s*-->\s*\([^:]\+\):\(\d\+\):\(\d\+\)]],
-                            filename = 1,
-                            row = 2,
-                            col = 3,
-                        },
-                    }
-                }
-            end
-        },
+        { import = "plugins" },
+        { import = "plugins.lsp" },
         checker = { enabled = true },
     }
-}
-)
+})
 
-
--- Lsp config
-vim.cmd [[set completeopt+=menuone,noselect,popup]]
-vim.api.nvim_create_autocmd("LspAttach", {
-    group = vim.api.nvim_create_augroup("my.lsp", {}),
-    callback = function(ev)
-        local client = assert(vim.lsp.get_client_by_id(ev.data.client_id))
-        if client:supports_method("textDocument/implementation") then
-            vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
-            vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "LSP hover" })
-            vim.keymap.set("n", "<leader>vws", vim.lsp.buf.workspace_symbol, { desc = "List workspace symbols" })
-            vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float, { desc = "Float diagnostics" })
-            vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to prev diagnostic" })
-            vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic" })
-            vim.keymap.set("n", "<leader>vca", vim.lsp.buf.code_action, { desc = "Code action" })
-            vim.keymap.set("n", "<leader>vrr", vim.lsp.buf.references, { desc = "Find references" })
-            vim.keymap.set("n", "<leader>vrn", vim.lsp.buf.rename, { desc = "Rename symbol" })
-            vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, { desc = "Signature help" })
-            vim.keymap.set("n", "<leader>vf", function()
-                vim.lsp.buf.format({ bufnr = ev.buf, id = client.id })
-            end, { desc = "Format document" })
-        end
-
-        if client:supports_method("textDocument/completion") then
-            local chars = {}
-            for i = 32, 126 do table.insert(chars, string.char(i)) end
-            client.server_capabilities.completionProvider.triggerCharacters = chars
-            vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
-        end
-    end,
-}
-)
+-- I'm not really sure the best place to put this for ease of access...
+vim.cmd.colorscheme("oxocarbon")
