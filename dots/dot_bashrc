@@ -49,11 +49,7 @@ export SSH_AUTH_SOCK="$HOME/.var/app/com.bitwarden.desktop/data/.bitwarden-ssh-a
 alias yust="just --justfile=\"\$HOME/.user.justfile\" --working-directory=\".\""
 alias ls="ls -a --color=auto"
 alias e="echo"
-if _command_exists rg; then
-    alias grep="rg --color=auto"
-else
-    alias grep="grep --color=auto"
-fi
+alias grep="grep --color=auto"
 
 if _command_exists lazygit; then alias lg="lazygit"; fi
 if _command_exists zellij; then alias zj="zellij"; fi
