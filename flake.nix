@@ -35,7 +35,6 @@
               lua-language-server
               stylua
 
-              nil
               self.formatter.${system}
             ];
           };
