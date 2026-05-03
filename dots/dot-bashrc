@@ -70,3 +70,11 @@ if [[ -f /etc/profiles/per-user/$USER/etc/profile.d/hm-session-vars.sh ]]; then
     source /etc/profiles/per-user/$USER/etc/profile.d/hm-session-vars.sh
 fi
 
+bind '"\e[3~": delete-char'
+# Ctrl+Arrow keys
+bind '"\e[1;5D": backward-word'
+bind '"\e[1;5C": forward-word'
+# Ctrl+Backspace
+bind '"\C-h": backward-kill-word'
+# Ctrl+Delete
+bind '"\e[3;5~": kill-word'
