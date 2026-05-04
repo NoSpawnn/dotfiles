@@ -37,6 +37,10 @@
 
               self.formatter.${system}
             ];
+            shellHook = "
+                git fetch
+                git status
+            ";
           };
         }
       );
