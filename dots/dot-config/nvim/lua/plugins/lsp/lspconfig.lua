@@ -5,19 +5,21 @@ local configs = {
 
     -- nil is better for everything except completion
     nil_ls = {
-        capabilities = { completionProvider = false }
+        capabilities = { textDocument = { completionProvider = nil } }
     },
     nixd = {
         capabilities = {
-            codeActionProvider = nil,
-            definitionProvider = false,
-            documentFormattingProvider = false,
-            documentSymbolProvider = false,
-            documentHighlightProvider = false,
-            hoverProvider = false,
-            inlayHintProvider = false,
-            referencesProvider = false,
-            renameProvider = false
+            textDocument = {
+                codeActionProvider = nil,
+                definitionProvider = false,
+                documentFormattingProvider = false,
+                documentSymbolProvider = false,
+                documentHighlightProvider = false,
+                hoverProvider = false,
+                inlayHintProvider = false,
+                referencesProvider = false,
+                renameProvider = false
+            }
         }
     }
 }
