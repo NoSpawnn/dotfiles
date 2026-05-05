@@ -29,6 +29,7 @@ init_dev_flake() {
 
 	echo "Try initialising dev flake for $lang..."
 	if nix flake init -t "path:${cache_dest}#${lang}"; then
+        if _command_exists direnv; then direnv allow; fi
 		echo "Okie!"
 		return 0
 	else
