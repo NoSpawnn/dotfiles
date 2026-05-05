@@ -12,6 +12,7 @@ local configs = {
             return vim.lsp.rpc.start(vim.split(command, " "), dispatchers)
         end
     },
+    zls = {},
 
     -- nil is better for everything except completion
     nil_ls = {
@@ -41,7 +42,9 @@ return {
         for ls, config in pairs(configs) do
             local path = configs_path .. "/" .. ls .. ".lua"
             if vim.loop.fs_stat(path) then
-                vim.lsp.config(ls, config)
+                if next(config) ~= nil then
+                    vim.lsp.config(ls, config)
+                end
                 vim.lsp.enable(ls)
             else
                 local msg = ("nvim-lspconfig: bad server: '%s'. see %s for valid servers"):format(ls, configs_path)
