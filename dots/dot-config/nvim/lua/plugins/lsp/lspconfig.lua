@@ -2,6 +2,16 @@ local configs = {
     clangd = {},
     lua_ls = {},
     rust_analyzer = {},
+    powershell_es = {
+        cmd = function(dispatchers)
+            local temp_path = vim.fn.stdpath('cache')
+
+            local command = ("powershell-editor-services -LogPath '%s/powershell_es.log' -SessionDetailsPath '%s/powershell_es.session.json' -HostName nvim -Stdio -LogLevel Information")
+            :format(temp_path, temp_path)
+
+            return vim.lsp.rpc.start(vim.split(command, " "), dispatchers)
+        end
+    },
 
     -- nil is better for everything except completion
     nil_ls = {
