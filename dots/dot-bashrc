@@ -36,9 +36,12 @@ init_dev_flake() {
 	fi
 }
 
-### Source global definitions ###
+### Source other definitions ###
 
 if [ -f /etc/bashrc ]; then source /etc/bashrc; fi
+if [ -f $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh ]; then
+    source $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
+fi
 
 ### Envs/Path/Other exports ###
 
