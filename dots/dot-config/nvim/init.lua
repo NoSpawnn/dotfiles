@@ -2,6 +2,7 @@ local vim = vim
 
 -- General editor config
 require("opts")
+require("keymaps")
 
 -- Lazy and plugins setup
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
