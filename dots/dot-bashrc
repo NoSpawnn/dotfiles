@@ -76,7 +76,7 @@ if _command_exists starship; then eval "$(starship init bash)"; fi
 export PATH
 export HISTCONTROL=ignoreboth:erasedups
 if [ -z "$SSH_CONNECTION" ]; then
-    if [ -f "$HOME/.var/app/com.bitwarden.desktop/data/.bitwarden-ssh-agent.sock" ]; then
+    if [ -e "$HOME/.var/app/com.bitwarden.desktop/data/.bitwarden-ssh-agent.sock" ]; then
         export SSH_AUTH_SOCK="$HOME/.var/app/com.bitwarden.desktop/data/.bitwarden-ssh-agent.sock"
     fi
 fi
