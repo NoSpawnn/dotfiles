@@ -1,5 +1,5 @@
 _default:
-    @/usr/bin/just --justfile {{ justfile() }} --list --list-heading $'Available commands:\n' --list-prefix $' - '
+    @just --justfile {{ justfile() }} --list --list-heading $'Available commands:\n' --list-prefix $' - '
 
 # Show BIOS info
 [group('System')]
@@ -155,18 +155,3 @@ dev-vm-new IMAGE="prompt" NAME="prompt" ENTER="ssh":
         incus shell $NAME
     fi
 
-# Install flatpaks from a file
-[group('Config')]
-install-flatpaks LIST_FILE="" SCOPE="user":
-    #!/usr/bin/env bash
-
-    LIST_FILE="{{ LIST_FILE }}"
-    SCOPE="{{ SCOPE }}"
-
-    flatpaks=$(cat $(realpath "$LIST_FILE") | tr '\n' ' ' )
-
-    if [[ "$SCOPE" == 'user' ]]; then
-        flatpak remote-add --if-not-exists --user flathub-user https://flathub.org/repo/flathub.flatpakrepo
-    fi
-
-    flatpak install -y --"$SCOPE" $flatpaks
