@@ -1,0 +1,8 @@
+keys:
+  - &me age1nam925v0clssuyafyurygunzpm6h9vddlx75mctqlc8a38q2nf7qd48s6l
+
+creation_rules:
+  - path_regex: (.*ssh.*)
+    key_groups:
+      - age:
+          - *me

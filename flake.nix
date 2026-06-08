@@ -32,6 +32,9 @@
               stow
               shfmt
 
+              sops
+              ssh-to-age
+
               lua-language-server
               stylua
 
