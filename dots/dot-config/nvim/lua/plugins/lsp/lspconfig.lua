@@ -14,6 +14,7 @@ local configs = {
     },
     zls = {},
     dartls = {},
+    ols = {},
 
     -- nil is better for everything except completion
     nil_ls = {
