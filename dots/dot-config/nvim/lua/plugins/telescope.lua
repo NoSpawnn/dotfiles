@@ -5,8 +5,12 @@ return {
 	version = "*",
 	dependencies = { "nvim-lua/plenary.nvim" },
 	opts = {
+        defaults = {
+            file_ignore_patterns = { ".git/" }
+        },
 		pickers = {
 			find_files = {
+                hidden = true,
 				follow = true,
 			},
 		},
