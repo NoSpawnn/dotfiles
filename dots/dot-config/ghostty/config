@@ -10,7 +10,7 @@
 # options that they want to change from the default.
 #
 # Run `ghostty +show-config --default --docs` to view a list of
-# all available config options and their default values.
+#f all available config options and their default values.
 #
 # Additionally, each config option is also explained in detail
 # on Ghostty's website, at https://ghostty.org/docs/config.
@@ -48,8 +48,8 @@
 # # Just for example:
 # resize-overlay-duration = 4s 200ms
 
-font-family = 0xProto Nerd Font
-font-size = 16
+font-family = BlexMono Nerd Font
+font-size = 12
 window-padding-x = 10
 window-padding-y = 5
 background-opacity = 0.8
