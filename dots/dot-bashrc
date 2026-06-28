@@ -90,7 +90,10 @@ alias grep="grep --color=auto"
 
 if _command_exists lazygit; then alias lg="lazygit"; fi
 if _command_exists zellij; then alias zj="zellij"; fi
-if _command_exists zoxide; then eval "$(zoxide init bash --cmd cd)"; fi
+if _command_exists zoxide; then
+    eval "$(zoxide init bash --cmd cd)"
+    alias zi="__zoxide_zi"
+fi
 if _command_exists eza; then
 	alias ls="eza -hl --icons=auto"
 	alias ll="eza -hla --icons=auto"
