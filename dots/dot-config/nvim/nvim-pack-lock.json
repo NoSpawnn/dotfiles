@@ -1,0 +1,48 @@
+{
+  "plugins": {
+    "align.nvim": {
+      "rev": "4fec458b276f005fcace41dce9e55d6895e5bcd1",
+      "src": "https://github.com/nospawnn/align.nvim"
+    },
+    "fzf": {
+      "rev": "d2a59a992a2455f609c0fde2ebd84427ea8f919a",
+      "src": "https://github.com/junegunn/fzf.vim"
+    },
+    "fzf-lua": {
+      "rev": "029a162a6671fdd453001fc1bca047ee3ecd5481",
+      "src": "https://github.com/ibhagwan/fzf-lua"
+    },
+    "fzf.vim": {
+      "rev": "d2a59a992a2455f609c0fde2ebd84427ea8f919a",
+      "src": "https://github.com/junegunn/fzf.vim"
+    },
+    "lualine.nvim": {
+      "rev": "221ce6b2d999187044529f49da6554a92f740a96",
+      "src": "https://github.com/nvim-lualine/lualine.nvim"
+    },
+    "nvim-autopairs": {
+      "rev": "59bce2eef357189c3305e25bc6dd2d138c1683f5",
+      "src": "https://github.com/windwp/nvim-autopairs"
+    },
+    "nvim-lspconfig": {
+      "rev": "3371bf298c1f56efc26771ee961f461176958fb5",
+      "src": "https://github.com/neovim/nvim-lspconfig"
+    },
+    "nvim-web-devicons": {
+      "rev": "dfbfaa967a6f7ec50789bead7ef87e336c1fa63c",
+      "src": "https://github.com/nvim-tree/nvim-web-devicons"
+    },
+    "plenary.nvim": {
+      "rev": "74b06c6c75e4eeb3108ec01852001636d85a932b",
+      "src": "https://github.com/nvim-lua/plenary.nvim"
+    },
+    "rainbow-delimiters.nvim": {
+      "rev": "a798325b7f36acc62741d1029930a7b96d4dd4bf",
+      "src": "https://gitlab.com/HiPhish/rainbow-delimiters.nvim"
+    },
+    "telescope.nvim": {
+      "rev": "427b576c16792edad01a92b89721d923c19ad60f",
+      "src": "https://github.com/nvim-telescope/telescope.nvim"
+    }
+  }
+}
