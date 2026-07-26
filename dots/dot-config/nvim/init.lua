@@ -4,6 +4,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
 vim.opt.relativenumber = true
+vim.opt.exrc = true
 
 -- undo config
 local undodir = vim.fn.stdpath("data") .. "/undodir"
@@ -64,8 +65,7 @@ vim.api.nvim_create_user_command(
     "Describe",
     function()
         local word = vim.fn.expand("<cword>")
-        if word == "" then return end
-        vim.cmd.help(word)
+        if word ~= "" then vim.cmd.help(word) end
     end,
     { desc = "Show help of symbol at cursor", force = true }
 )
