@@ -113,7 +113,7 @@ layout {
     }
 }
 
-spawn-at-startup "noctalia-shell"
+spawn-at-startup "noctalia"
 spawn-sh-at-startup "flatpak run com.bitwarden.desktop" // Launch to tray
 
 hotkey-overlay {
