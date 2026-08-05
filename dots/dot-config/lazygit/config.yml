@@ -1,5 +1,19 @@
 # https://github.com/jesseduffield/lazygit/blob/master/docs/Config.md
- 
 os:
   edit: "$EDITOR {{filename}}"
   open: "xdg-open {{filename}}"
+
+gui:
+  nerdFontsVersion: "3"
+
+customCommands:
+  - key: 'p'
+    context: 'global'
+    command: 'git pull --recurse-submodules'
+    loadingText: 'Pulling with submodules'
+    output: 'log'
+  - key: '<c-p>'
+    context: 'global'
+    command: 'git pull'
+    loadingText: 'Pulling remote repo'
+    output: 'log'
