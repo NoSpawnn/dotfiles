@@ -26,7 +26,6 @@ if _command_exists nvim; then
 fi
 
 ### Binds ###
-# List functions with `print -l ${(ok)functions}`
 bindkey "^[[3~"   delete-char
 bindkey "^[[1;5D" backward-word
 bindkey "^[[1;5C" forward-word
@@ -40,11 +39,10 @@ bindkey  "^[[H"   beginning-of-line
 bindkey  "^[[F"   end-of-line
 
 ### History ###
-HISTFILE=~/.zhistory
+HISTFILE=$HOME/.zhistory
 HISTSIZE=10000
 SAVEHIST=10000
 setopt histignorealldups
-setopt SHARE_HISTORY
 
 ### Case-insensitive path-completion ###
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
@@ -60,8 +58,11 @@ if [ -z "$SSH_CONNECTION" ]; then
 fi
 
 if _command_exists fzf; then
+    if _command_exists fd; then
+        export FZF_DEFAULT_COMMAND="fd --type f --hidden --follow --ignore --exclude .devenv"
+        export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+    fi
     eval "$(fzf --zsh)"
-    _command_exists fd && export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow'
 fi
 
 if _command_exists zoxide; then
