@@ -74,7 +74,9 @@ vim.api.nvim_create_user_command(
 vim.g.netrw_banner       = 0  -- no banner
 vim.g.netrw_liststyle    = 3  -- tree style
 vim.g.netrw_browse_split = 4  -- always vertical
+vim.g.netrw_altv         = 1  -- splits on the right
 vim.g.netrw_keepdir      = 0  -- change cwd as needed
+vim.g.netrw_list_hide    = [[ \(^\|\s\)\zs\(^\|\.\)\+ ]] -- hide dotfiles
 
 vim.keymap.set("n", "<leader>fe", "<CMD>Explore<CR>")  -- take over window
 vim.keymap.set("n", "<leader>fv", "<CMD>Lexplore<CR>") -- open in left split
@@ -86,5 +88,5 @@ require("plug")
 require("snippets")
 
 -- theme
-vim.cmd.colorscheme("industry")
+vim.cmd.colorscheme("gruvbox")
 
