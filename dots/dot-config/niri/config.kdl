@@ -298,8 +298,8 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
-    Mod+T hotkey-overlay-title="Open a Terminal" { spawn "kitty"; }
-    Mod+D hotkey-overlay-title="Run an Application" { spawn-sh "kitty -o confirm_os_window_close=0 --class otter --title otter-launcher -e sh -c 'otter-launcher'"; }
+    Mod+T hotkey-overlay-title="Open a Terminal" { spawn "foot"; }
+    Mod+D hotkey-overlay-title="Run an Application" { spawn-sh "foot --app-id otter --title otter-launcher sh -c 'otter-launcher'"; }
     Mod+Escape hotkey-overlay-title="Lock the Screen: swaylock" { spawn-sh "swaylock --color 000000"; }
 
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
