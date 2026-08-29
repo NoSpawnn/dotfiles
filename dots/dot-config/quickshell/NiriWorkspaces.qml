@@ -60,7 +60,10 @@ Item {
                 try {
                     const event = JSON.parse(line)
                     if (event.WorkspacesChanged) {
-                        root.workspaces = event.WorkspacesChanged.workspaces
+                        root.workspaces =
+                            event.WorkspacesChanged.workspaces
+                                .slice()
+                                .sort((a, b) => a.idx - b.idx)
                     }
                     else if (event.WorkspaceActivated) {
                         const id = event.WorkspaceActivated.id
