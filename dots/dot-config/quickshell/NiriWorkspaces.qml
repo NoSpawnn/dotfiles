@@ -12,6 +12,7 @@ Item {
     property string activeTextColor: "#ffffff"
     property string inactiveTextColor: "#555555"
     property bool   hideScratchBuffer: true
+    property bool   useIndexAsName: true
 
     property var workspaces: []
 
@@ -40,7 +41,11 @@ Item {
                 Text {
                     id: label
                     anchors.centerIn: parent
-                    text: modelData.name || String(modelData.idx + 1)
+                    text: if (root.useIndexAsName) {
+                        String(modelData.idx + 1)
+                    } else {
+                        modelData.name || String(modelData.idx + 1)
+                    }
                     color: modelData.is_active ? root.inactiveTextColor : root.activeTextColor
                 }
 
