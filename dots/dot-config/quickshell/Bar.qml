@@ -11,6 +11,8 @@ Scope {
         model: Quickshell.screens
 
         PanelWindow {
+            id: panel
+
             required property var modelData
             screen: modelData
 
@@ -55,7 +57,9 @@ Scope {
             BluetoothWidget {
                 anchors.right: parent.right
                 anchors.verticalCenter: parent.verticalCenter
-                color: theme.foreground
+                chipColor: theme.bg2
+                textColor: theme.foreground
+                bgColor: theme.background
             }
 
             BatteryIndicator {
