@@ -5,6 +5,8 @@ import QtQuick
 Item {
     id: root
 
+    required property string output
+
     property string activeChipColor: "#555555"
     property string inactiveChipColor: "#ffffff"
     property string activeTextColor: "#ffffff"
@@ -63,6 +65,7 @@ Item {
                         root.workspaces =
                             event.WorkspacesChanged.workspaces
                                 .slice()
+                                .filter((ws) => ws.output === root.output)
                                 .sort((a, b) => a.idx - b.idx)
                     }
                     else if (event.WorkspaceActivated) {

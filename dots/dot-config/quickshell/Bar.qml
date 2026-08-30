@@ -31,6 +31,7 @@ Scope {
 
             // left
             NiriWorkspaces {
+                output: screen.name
                 activeTextColor: theme.foreground
                 inactiveTextColor: theme.background
                 activeChipColor: theme.foreground
