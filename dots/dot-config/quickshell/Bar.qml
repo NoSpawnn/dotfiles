@@ -52,6 +52,12 @@ Scope {
             // ------------------
 
             // right
+            BluetoothWidget {
+                anchors.right: parent.right
+                anchors.verticalCenter: parent.verticalCenter
+                color: theme.foreground
+            }
+
             BatteryIndicator {
                 lowBatteryColor: theme.warning
                 backgroundColor: theme.bg2
