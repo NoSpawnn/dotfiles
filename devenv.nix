@@ -19,7 +19,7 @@
     kdePackages.qtdeclarative
   ];
 
-  scripts.qs.exec = "${pkgs.quickshell}/bin/quickshell -p ${./dots/dot-config/quickshell}";
+  scripts.qs.exec = "${pkgs.quickshell}/bin/quickshell -p ./dots/dot-config/quickshell";
 
   enterShell = ''
     git fetch
