@@ -8,10 +8,10 @@ Item {
     property string color
     property string backgroundColor: "transparent"
     property string lowBatteryColor: "red"
-    property int    lowBatteryThreshold: 20
+    property int lowBatteryThreshold: 20
 
-    readonly property var  battery: UPower.displayDevice
-    readonly property int  percentage: Math.round(battery.percentage * 100)
+    readonly property var battery: UPower.displayDevice
+    readonly property int percentage: Math.round(battery.percentage * 100)
     readonly property bool charging: battery.state === UPowerDeviceState.Charging
 
     implicitWidth: batteryText.implicitWidth
@@ -31,4 +31,3 @@ Item {
         }
     }
 }
-

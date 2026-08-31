@@ -13,8 +13,8 @@ Item {
     property string inactiveChipColor: "#ffffff"
     property string activeTextColor: "#ffffff"
     property string inactiveTextColor: "#555555"
-    property bool   hideScratchBuffer: true
-    property bool   useIndexAsName: true
+    property bool hideScratchBuffer: true
+    property bool useIndexAsName: true
 
     property var workspaces: []
 
@@ -48,7 +48,7 @@ Item {
 
                 MouseArea {
                     anchors.fill: parent
-                    onClicked: Quickshell.execDetached(["niri", "msg", "action", "focus-workspace", parent.modelData.idx]);
+                    onClicked: Quickshell.execDetached(["niri", "msg", "action", "focus-workspace", parent.modelData.idx])
                 }
             }
         }
@@ -58,25 +58,22 @@ Item {
         command: ["niri", "msg", "--json", "event-stream"]
         running: true
         stdout: SplitParser {
-            onRead: (line) => {
+            onRead: line => {
                 try {
-                    const event = JSON.parse(line)
+                    const event = JSON.parse(line);
                     if (event.WorkspacesChanged) {
-                        root.workspaces =
-                            event.WorkspacesChanged.workspaces
-                                .slice()
-                                .filter((ws) => ws.output === root.output)
-                                .sort((a, b) => a.idx - b.idx)
-                    }
-                    else if (event.WorkspaceActivated) {
-                        const id = event.WorkspaceActivated.id
-                        const focused = event.WorkspaceActivated.focused
-                        root.workspaces = root.workspaces.map((workspace) => {
-                            return Object.assign({}, workspace, { is_active: workspace.id === id })
-                        })
+                        root.workspaces = event.WorkspacesChanged.workspaces.slice().filter(ws => ws.output === root.output).sort((a, b) => a.idx - b.idx);
+                    } else if (event.WorkspaceActivated) {
+                        const id = event.WorkspaceActivated.id;
+                        const focused = event.WorkspaceActivated.focused;
+                        root.workspaces = root.workspaces.map(workspace => {
+                            return Object.assign({}, workspace, {
+                                is_active: workspace.id === id
+                            });
+                        });
                     }
                 } catch (error) {
-                    console.log("Invalid Niri event:", line)
+                    console.log("Invalid Niri event:", line);
                 }
             }
         }

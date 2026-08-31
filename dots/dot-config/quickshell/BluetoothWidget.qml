@@ -28,10 +28,8 @@ Item {
             color: root.textColor
             anchors.centerIn: parent
             text: {
-                const connectedDevices = Bluetooth.devices.values.filter(device => device.connected).length
-                return connectedDevices > 0
-                    ? `Bluetooth (${connectedDevices})`
-                    : "Bluetooth"
+                const connectedDevices = Bluetooth.devices.values.filter(device => device.connected).length;
+                return connectedDevices > 0 ? `Bluetooth (${connectedDevices})` : "Bluetooth";
             }
         }
 
@@ -104,7 +102,7 @@ Item {
 
                                 Text {
                                     visible: row.modelData.batteryAvailable
-                                    text:  "(" + (row.modelData.battery * 100) + "%)"
+                                    text: "(" + (row.modelData.battery * 100) + "%)"
                                     color: root.textColor
                                 }
                             }
@@ -113,12 +111,12 @@ Item {
                                 anchors.fill: parent
                                 hoverEnabled: true
                                 cursorShape: Qt.PointingHandCursor
-                                onClicked: (_) => {
-                                    const d = row.modelData
+                                onClicked: _ => {
+                                    const d = row.modelData;
                                     if (d.paired) {
-                                        d.connected ? d.disconnect() : d.connect()
+                                        d.connected ? d.disconnect() : d.connect();
                                     } else {
-                                        d.pair()
+                                        d.pair();
                                     }
                                 }
                             }
