@@ -88,7 +88,7 @@ cmd = """
 niri msg action set-column-width "50%"
 niri msg action set-window-height "50%"
 niri msg action center-window
-fsel --no-exec
+fsel
 """
 
 [[modules]]
