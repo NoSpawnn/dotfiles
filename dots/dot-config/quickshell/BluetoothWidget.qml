@@ -1,3 +1,5 @@
+pragma ComponentBehavior: Bound
+
 import Quickshell
 import Quickshell.Bluetooth
 import QtQuick
@@ -75,6 +77,8 @@ Item {
                     id: deviceList
                     model: Bluetooth.devices
                     delegate: Row {
+                        id: row
+
                         required property var modelData
 
                         width: deviceListColumn.width
@@ -94,13 +98,13 @@ Item {
                                 spacing: 6
 
                                 Text {
-                                    text: modelData.name
+                                    text: row.modelData.name
                                     color: root.textColor
                                 }
 
                                 Text {
-                                    visible: modelData.batteryAvailable
-                                    text:  "(" + (modelData.battery * 100) + "%)"
+                                    visible: row.modelData.batteryAvailable
+                                    text:  "(" + (row.modelData.battery * 100) + "%)"
                                     color: root.textColor
                                 }
                             }
@@ -110,7 +114,7 @@ Item {
                                 hoverEnabled: true
                                 cursorShape: Qt.PointingHandCursor
                                 onClicked: (_) => {
-                                    const d = modelData
+                                    const d = row.modelData
                                     if (d.paired) {
                                         d.connected ? d.disconnect() : d.connect()
                                     } else {
@@ -129,7 +133,7 @@ Item {
                             Text {
                                 color: root.textColor
                                 anchors.centerIn: parent
-                                text: BluetoothDeviceState.toString(modelData.state)
+                                text: BluetoothDeviceState.toString(row.modelData.state)
                             }
                         }
                     }

@@ -1,3 +1,5 @@
+pragma ComponentBehavior: Bound
+
 import Quickshell
 import Quickshell.Io
 import QtQuick
@@ -27,11 +29,10 @@ Item {
 
         Repeater {
             model: root.workspaces
-
-            Rectangle {
+            delegate: Rectangle {
                 required property var modelData
 
-                visible: root.hideScratchBuffer && modelData.name !== "scratch"
+                visible: !root.hideScratchBuffer || modelData.name !== "scratch"
                 color: modelData.is_active ? root.activeChipColor : root.inactiveChipColor
 
                 width: label.implicitWidth + 16
@@ -41,19 +42,13 @@ Item {
                 Text {
                     id: label
                     anchors.centerIn: parent
-                    text: if (root.useIndexAsName) {
-                        String(modelData.idx + 1)
-                    } else {
-                        modelData.name || String(modelData.idx + 1)
-                    }
-                    color: modelData.is_active ? root.inactiveTextColor : root.activeTextColor
+                    text: root.useIndexAsName ? parent.modelData.idx : (parent.modelData.name || parent.modelData.idx)
+                    color: parent.modelData.is_active ? root.inactiveTextColor : root.activeTextColor
                 }
 
                 MouseArea {
                     anchors.fill: parent
-                    hoverEnabled: true
-                    cursorShape: Qt.PointingHandCursor
-                    onClicked: Quickshell.execDetached(["niri", "msg", "action", "focus-workspace", modelData.idx]);
+                    onClicked: Quickshell.execDetached(["niri", "msg", "action", "focus-workspace", parent.modelData.idx]);
                 }
             }
         }

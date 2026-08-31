@@ -1,3 +1,5 @@
+pragma ComponentBehavior: Bound
+
 import Quickshell
 
 Scope {
@@ -16,7 +18,7 @@ Scope {
             required property var modelData
             screen: modelData
 
-            color: theme.background
+            color: root.theme.background
 
             anchors {
                 top: true
@@ -33,11 +35,11 @@ Scope {
 
             // left
             NiriWorkspaces {
-                output: screen.name
-                activeTextColor: theme.foreground
-                inactiveTextColor: theme.background
-                activeChipColor: theme.foreground
-                inactiveChipColor: theme.bg2
+                output: panel.screen.name
+                activeTextColor: root.theme.foreground
+                inactiveTextColor: root.theme.background
+                activeChipColor: root.theme.foreground
+                inactiveChipColor: root.theme.bg2
                 anchors {
                     verticalCenter: parent.verticalCenter
                     left: parent.left
@@ -49,7 +51,7 @@ Scope {
             ClockWidget {
                 dateFormat: "hh:mm"
                 anchors.centerIn: parent
-                color: theme.foreground
+                color: root.theme.foreground
             }
             // ------------------
 
@@ -57,15 +59,15 @@ Scope {
             BluetoothWidget {
                 anchors.right: parent.right
                 anchors.verticalCenter: parent.verticalCenter
-                chipColor: theme.bg2
-                textColor: theme.foreground
-                bgColor: theme.background
+                chipColor: root.theme.bg2
+                textColor: root.theme.foreground
+                bgColor: root.theme.background
             }
 
             BatteryIndicator {
-                lowBatteryColor: theme.warning
-                backgroundColor: theme.bg2
-                color: theme.foreground
+                lowBatteryColor: root.theme.warning
+                backgroundColor: root.theme.bg2
+                color: root.theme.foreground
                 anchors.right: parent.right
                 anchors.verticalCenter: parent.verticalCenter
             }
