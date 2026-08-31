@@ -8,7 +8,6 @@
     nixfmt
 
     shellcheck
-    stow
     shfmt
 
     sops
@@ -16,7 +15,11 @@
 
     lua-language-server
     stylua
+
+    kdePackages.qtdeclarative
   ];
+
+  scripts.qs.exec = "${pkgs.quickshell}/bin/quickshell -p ./dots/dot-config/quickshell/";
 
   enterShell = ''
     git fetch
