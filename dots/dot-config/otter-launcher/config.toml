@@ -88,7 +88,17 @@ cmd = """
 niri msg action set-column-width "50%"
 niri msg action set-window-height "50%"
 niri msg action center-window
-niri msg action spawn -- $(fsel --no-exec)
+fsel --no-exec
+"""
+
+[[modules]]
+description = "manage bluetooth"
+prefix = "bl"
+cmd = """
+niri msg action set-column-width "50%"
+niri msg action set-window-height "50%"
+niri msg action center-window
+bluetui
 """
 
 [[modules]]
