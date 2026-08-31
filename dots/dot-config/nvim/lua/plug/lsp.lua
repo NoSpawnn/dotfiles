@@ -1,4 +1,4 @@
-vim.pack.add("github.com/neovim/nvim-lspconfig")
+vim.pack.add({"github.com/neovim/nvim-lspconfig"})
 
 vim.diagnostic.config({ virtual_text = true })
 vim.opt.completeopt:append("fuzzy,menuone,noselect,popup")
