@@ -5,6 +5,7 @@ require("plug.gruvbox")
 require("plug.oil")
 require("plug.rainbow-delim")
 require("plug.telescope")
+require("plug.conform")
 
 -- local handle = io.popen([[ find -name "*.lua" -exec basename {} \; | sort ]])
 -- local files = handle:read("a")
