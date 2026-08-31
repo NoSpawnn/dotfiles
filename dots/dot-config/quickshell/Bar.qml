@@ -12,13 +12,14 @@ Scope {
     Variants {
         model: Quickshell.screens
 
+        // qmllint disable uncreatable-type
         PanelWindow {
             id: panel
 
             required property var modelData
             screen: modelData
 
-            color: root.theme.background
+            color: "transparent"
 
             anchors {
                 top: true
