@@ -1,3 +1,3 @@
 vim.pack.add({
-    "github.com/hiphish/rainbow-delimiters.nvim"
+    "github.com/hiphish/rainbow-delimiters.nvim",
 })

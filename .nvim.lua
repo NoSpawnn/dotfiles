@@ -6,18 +6,22 @@ local vim = vim
 vim.lsp.config("qmlls", { root_markers = { "shell.qml" }, command = { "qmlls", "-E" } })
 vim.lsp.enable("qmlls")
 vim.api.nvim_create_autocmd("LspAttach", {
-	callback = function(args)
-		local client = vim.lsp.get_client_by_id(args.data.client_id)
-		if client then
-			client.server_capabilities.semanticTokensProvider = nil
-		end
-	end,
+    callback = function(args)
+        local client = vim.lsp.get_client_by_id(args.data.client_id)
+        if client then
+            client.server_capabilities.semanticTokensProvider = nil
+        end
+    end,
 })
 
+vim.lsp.enable("lua_ls")
+
 require("conform").setup({
-	formatters_by_ft = {
-		lua = { "stylua" },
-		qml = { "qmlformat" },
-	},
-	format_on_save = true,
+    formatters_by_ft = {
+        lua = { "stylua" },
+        qml = { "qmlformat" },
+    },
+    format_on_save = {
+        lsp_format = "never",
+    },
 })
