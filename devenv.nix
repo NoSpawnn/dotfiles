@@ -14,12 +14,12 @@
     ssh-to-age
 
     lua-language-server
-    stylua
 
     kdePackages.qtdeclarative
   ];
 
   scripts.qs.exec = "${pkgs.quickshell}/bin/quickshell -p ./dots/dot-config/quickshell";
+  scripts.stylua.exec = "${pkgs.stylua}/bin/stylua  --config-path ${./.stylua.toml} $@";
 
   enterShell = ''
     git fetch
