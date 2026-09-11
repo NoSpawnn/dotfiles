@@ -7,80 +7,22 @@ _command_exists() {
 	command -v "$1" &>/dev/null
 }
 
-### Custom commands/helpers ###
-
-init_dev_flake() {
-	# "https://github.com/the-nix-way/dev-templates"
-
-	local lang=$1
-
-	if [ -z "$lang" ]; then
-		echo "Usage: init_dev_flake <language>" >&2
-		return 1
-	fi
-
-	local repo="https://github.com/the-nix-way/dev-templates"
-	local cache_dest="${HOME}/.cache/flake-dev-templates"
-	if [[ -d "$cache_dest" ]]; then
-		git -C "$cache_dest" fetch --prune
-	else
-		git clone --depth 1 "$repo" "$cache_dest"
-	fi
-
-	echo "Try initialising dev flake for $lang..."
-	if nix flake init -t "path:${cache_dest}#${lang}"; then
-        if _command_exists direnv; then direnv allow; fi
-		echo "Okie!"
-		return 0
-	else
-		return 1
-	fi
-}
-
-### Source other definitions ###
-
+# Source other definitions
 if [ -f /etc/bashrc ]; then source /etc/bashrc; fi
-if [ -f $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh ]; then
-    source $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
-fi
 
-### Envs/Path/Other exports ###
+export HISTCONTROL=ignoreboth:erasedups
 
 PATH="$PATH:$HOME/.local/bin"
+export PATH
 
-if [ -f "$HOME/.cargo/env" ]; then
-	source "$HOME/.cargo/env"
-	PATH=$PATH:$HOME/.cargo/bin
-fi
-
-if [ -d "$HOME/.spicetify" ]; then
-	PATH=$PATH:$HOME/.spicetify
-fi
-
-if _command_exists asdf; then
-	PATH="$PATH:${ASDF_DATA_DIR:-$HOME/.asdf}/shims"
-	source <(asdf completion bash)
+if [ -z "$SSH_CONNECTION" ]; then
+    ssh_agent_sock_path="$HOME/.var/app/com.bitwarden.desktop/data/.bitwarden-ssh-agent.sock"
+    [[ -e "$ssh_agent_sock_path" ]] && export SSH_AUTH_SOCK="$ssh_agent_sock_path"
 fi
 
 if _command_exists fzf; then
 	eval "$(fzf --bash)"
 	if _command_exists fd; then export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow'; fi
-fi
-
-if _command_exists direnv; then eval "$(direnv hook bash)"; fi
-
-# TODO: there should only ever be one of these...
-if _command_exists oh-my-posh; then eval "$(oh-my-posh init bash --config "$HOME/.config/ohmyposh/config.toml")"; fi
-if _command_exists starship; then eval "$(starship init bash)"; fi
-
-export PATH
-
-export HISTCONTROL=ignoreboth:erasedups
-
-if [ -z "$SSH_CONNECTION" ]; then
-    if [ -e "$HOME/.var/app/com.bitwarden.desktop/data/.bitwarden-ssh-agent.sock" ]; then
-        export SSH_AUTH_SOCK="$HOME/.var/app/com.bitwarden.desktop/data/.bitwarden-ssh-agent.sock"
-    fi
 fi
 
 ### Aliases ###
@@ -89,7 +31,6 @@ alias ls="ls -a --color=auto"
 alias grep="grep --color=auto"
 
 if _command_exists lazygit; then alias lg="lazygit"; fi
-if _command_exists zellij; then alias zj="zellij"; fi
 if _command_exists zoxide; then
     eval "$(zoxide init bash --cmd cd)"
     alias zi="__zoxide_zi"
