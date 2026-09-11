@@ -52,3 +52,7 @@ bind '"\e[1;5C": forward-word'
 bind '"\C-h": backward-kill-word'
 # Ctrl+Delete
 bind '"\e[3;5~": kill-word'
+
+### Prompt ###
+export PS1="\\A \\w \\n> "
+export PS2="... "
