@@ -1,16 +1,13 @@
-require("plug.align")
-require("plug.lsp")
-require("plug.lualine")
-require("plug.gruvbox")
-require("plug.oil")
-require("plug.rainbow-delim")
-require("plug.telescope")
-require("plug.conform")
+local config_dir = vim.fn.stdpath("config")
+local plug_dir = config_dir .. "/lua/plug"
 
--- local handle = io.popen([[ find -name "*.lua" -exec basename {} \; | sort ]])
--- local files = handle:read("a")
--- handle:close()
---
--- for f in files:gsub("[\n]") do
---     vim.notify(f)
--- end
+for path in vim.fn.glob(plug_dir .. "/**/*.lua"):gmatch("[^%s]+") do
+    local relpath = path:sub(#plug_dir + 2)
+    local module_name = relpath:gsub("%.lua$", ""):gsub("/", ".")
+
+    vim.notify("Found module: " .. module_name, vim.log.levels.DEBUG)
+
+    if module_name ~= "init" then
+        require("plug." .. module_name)
+    end
+end

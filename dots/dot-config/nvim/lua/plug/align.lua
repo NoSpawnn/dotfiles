@@ -1,3 +1,3 @@
 vim.pack.add({
-    "github.com/nospawnn/align.nvim",
+    "https://github.com/nospawnn/align.nvim",
 })

@@ -1,4 +1,6 @@
-vim.pack.add({ "github.com/neovim/nvim-lspconfig" })
+vim.pack.add({
+    "https://github.com/neovim/nvim-lspconfig"
+})
 
 vim.diagnostic.config({ virtual_text = true })
 vim.opt.completeopt:append("fuzzy,menuone,noselect,popup")
@@ -22,9 +24,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
         if client:supports_method("textDocument/completion") then
             local chars = {}
-            for i = 32, 126 do
-                table.insert(chars, string.char(i))
-            end
+            for i = 32, 126 do table.insert(chars, string.char(i)) end
             client.server_capabilities.completionProvider.triggerCharacters = chars
             vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
             vim.keymap.set("i", "<C-space>", vim.lsp.completion.get)
