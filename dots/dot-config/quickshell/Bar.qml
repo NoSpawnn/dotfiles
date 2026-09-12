@@ -1,6 +1,7 @@
 pragma ComponentBehavior: Bound
 
 import Quickshell
+import QtQuick
 
 Scope {
     id: root
@@ -57,20 +58,24 @@ Scope {
             // ------------------
 
             // right
-            BluetoothWidget {
+            Row {
                 anchors.right: parent.right
                 anchors.verticalCenter: parent.verticalCenter
-                chipColor: root.theme.bg2
-                textColor: root.theme.foreground
-                bgColor: root.theme.background
-            }
+                spacing: 20
 
-            BatteryIndicator {
-                lowBatteryColor: root.theme.warning
-                backgroundColor: root.theme.bg2
-                color: root.theme.foreground
-                anchors.right: parent.right
-                anchors.verticalCenter: parent.verticalCenter
+                BluetoothWidget {
+                    anchors.verticalCenter: parent.verticalCenter
+                    chipColor: root.theme.bg2
+                    textColor: root.theme.foreground
+                    bgColor: root.theme.background
+                }
+
+                BatteryIndicator {
+                    lowBatteryColor: root.theme.warning
+                    backgroundColor: root.theme.bg2
+                    color: root.theme.foreground
+                    anchors.verticalCenter: parent.verticalCenter
+                }
             }
             // ------------------
         }
