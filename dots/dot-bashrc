@@ -32,6 +32,10 @@ if _command_exists fzf; then
 	if _command_exists fd; then export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow'; fi
 fi
 
+if _command_exists neovim; then
+    export EDITOR=nvim
+fi
+
 ### Aliases ###
 
 alias ls="ls -a --color=auto"
