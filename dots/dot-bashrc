@@ -7,6 +7,10 @@ _command_exists() {
 	command -v "$1" &>/dev/null
 }
 
+_flatpak_installed() {
+    flatpak list --app --columns application | grep "$1" &>/dev/null
+}
+
 # Source other definitions
 if [ -f /etc/bashrc ]; then source /etc/bashrc; fi
 
@@ -16,7 +20,7 @@ PATH="$PATH:$HOME/.local/bin"
 export PATH
 
 if [ -z "$SSH_CONNECTION" ]; then
-    if _command_exists "flatpak run com.bitwarden.desktop" && [ -e "$HOME/.var/app/com.bitwarden.desktop/data/.bitwarden-ssh-agent.sock" ]; then
+    if _flatpak_installed "com.bitwarden.desktop" && [ -e "$HOME/.var/app/com.bitwarden.desktop/data/.bitwarden-ssh-agent.sock" ]; then
         export SSH_AUTH_SOCK="$HOME/.var/app/com.bitwarden.desktop/data/.bitwarden-ssh-agent.sock"
     elif _command_exists bitwarden-desktop && [ -e "$HOME/.bitwarden-ssh-agent.sock" ]; then
         export SSH_AUTH_SOCK="$HOME/.bitwarden-ssh-agent.sock"
