@@ -28,24 +28,72 @@ if [ -z "$SSH_CONNECTION" ]; then
 fi
 
 if _command_exists fzf; then
-	eval "$(fzf --bash)"
-	if _command_exists fd; then export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow'; fi
+    eval "$(fzf --bash)"
+    if _command_exists fd; then
+        export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow'
+    fi
 fi
 
-if _command_exists neovim; then
+if _command_exists nvim; then
     export EDITOR=nvim
+    alias v=nvim
 fi
+
+if _command_exists mise; then
+    eval "$(mise activate bash)"
+fi
+
+
+### Prompt ###
+
+# Gruvbox palette
+GRUV_FG=$'\e[38;5;223m'
+GRUV_RESET=$'\e[0m'
+GRUV_FG=$'\e[38;5;223m'
+GRUV_AQUA=$'\e[38;5;108m'
+GRUV_YELLOW=$'\e[38;5;214m'
+GRUV_RED=$'\e[38;5;167m'
+GRUV_ORANGE=$'\e[38;5;208m'
+
+PROMPT_COMMAND="prompt_command${PROMPT_COMMAND:+;$PROMPT_COMMAND}"
+prompt_command() {
+    if (( $? == 0 )); then
+        __PS1_COLOUR=""
+    else
+        __PS1_COLOUR=$GRUV_RED
+    fi
+
+    # print a newline after commands
+    : "${__PS1_FIRST_PROMPT:=1}"
+    if (( !__PS1_FIRST_PROMPT )); then
+        printf '\n'
+    fi
+    __PS1_FIRST_PROMPT=0
+
+    # git stuff
+    __PS1_GITINFO=""
+    if git status >/dev/null 2>&1; then
+        local branch=$(git branch --show-current 2>/dev/null)
+        local remote=$(git config --get "branch.$branch.remote")
+        __PS1_GITINFO=" ($remote @ $branch)"
+    fi
+}
+export PS1='\[$(tput sc; tput hpa $(($COLUMNS - 5)))\]\A\[$(tput rc)\]\w${__PS1_GITINFO}\n\[${__PS1_COLOUR}\]>\[${GRUV_RESET}\] '
+export PS2="... "
+
+clear() { __PS1_FIRST_PROMPT=1; command clear "$@"; }
+reset() { __PS1_FIRST_PROMPT=1; command reset "$@"; }
 
 ### Aliases ###
 
 alias ls="ls -a --color=auto"
 alias grep="grep --color=auto"
 
-if _command_exists lazygit; then alias lg="lazygit"; fi
 if _command_exists zoxide; then
     eval "$(zoxide init bash --cmd cd)"
     alias zi="__zoxide_zi"
 fi
+if _command_exists lazygit; then alias lg="lazygit"; fi
 if _command_exists eza; then
 	alias ls="eza -hl --icons=auto"
 	alias ll="eza -hla --icons=auto"
@@ -64,6 +112,3 @@ bind '"\C-h": backward-kill-word'
 # Ctrl+Delete
 bind '"\e[3;5~": kill-word'
 
-### Prompt ###
-export PS1="\\A \\w \\n> "
-export PS2="... "
