@@ -8,9 +8,7 @@ vim.opt.exrc = true
 
 -- undo config
 local undodir = vim.fn.stdpath("data") .. "/undodir"
-if not vim.fn.isdirectory(undodir) then
-    vim.fn.mkdir(undodir, "p")
-end
+if not vim.fn.isdirectory(undodir) then vim.fn.mkdir(undodir, "p") end
 vim.opt.undodir = undodir
 vim.opt.undofile = true
 vim.opt.swapfile = false
@@ -35,7 +33,7 @@ vim.opt.splitbelow = true
 vim.opt.signcolumn = "yes"
 
 -- display certain whitespace
-vim.opt.listchars = "trail:~,tab:>-"
+vim.opt.listchars = "trail:~,tab:>."
 vim.opt.list = true
 
 -- use system clipboard
@@ -63,9 +61,7 @@ vim.keymap.set({ "n", "i" }, "<C-x><C-s>", "<ESC>:w<CR>")
 -- emacs-like describe
 vim.api.nvim_create_user_command("Describe", function()
     local word = vim.fn.expand("<cword>")
-    if word ~= "" then
-        vim.cmd.help(word)
-    end
+    if word ~= "" then vim.cmd.help(word) end
 end, { desc = "Show help of symbol at cursor", force = true })
 
 -- netrw
