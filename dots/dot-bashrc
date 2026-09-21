@@ -47,7 +47,6 @@ fi
 ### Prompt ###
 
 # Gruvbox palette
-GRUV_FG=$'\e[38;5;223m'
 GRUV_RESET=$'\e[0m'
 GRUV_FG=$'\e[38;5;223m'
 GRUV_AQUA=$'\e[38;5;108m'
