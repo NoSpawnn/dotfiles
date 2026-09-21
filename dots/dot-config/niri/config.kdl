@@ -105,6 +105,7 @@ layout {
 hotkey-overlay { skip-at-startup; }
 
 spawn-at-startup "pipewire"
+spawn-at-startup "udiskie"
 spawn-at-startup "quickshell"
 spawn-at-startup "wpaperd"
 spawn-sh-at-startup "flatpak run com.bitwarden.desktop"
