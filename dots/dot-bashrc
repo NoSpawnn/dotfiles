@@ -74,7 +74,9 @@ prompt_command() {
     if git status >/dev/null 2>&1; then
         local branch=$(git branch --show-current 2>/dev/null)
         local remote=$(git config --get "branch.$branch.remote")
-        __PS1_GITINFO=" ($remote @ $branch)"
+        if [[ -n "$branch" && -n "$remote" ]]; then
+            __PS1_GITINFO=" ($remote @ $branch)"
+        fi
     fi
 }
 export PS1='\[$(tput sc; tput hpa $(($COLUMNS - 5)))\]\A\[$(tput rc)\]\w${__PS1_GITINFO}\n\[${__PS1_COLOUR}\]>\[${GRUV_RESET}\] '
