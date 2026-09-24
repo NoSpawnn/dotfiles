@@ -30,6 +30,9 @@ input {
         numlock
         repeat-delay 200
         repeat-rate 35
+        xkb {
+            options "caps:swapescape"
+        }
     }
 
     touchpad {
