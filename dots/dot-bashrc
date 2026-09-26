@@ -79,7 +79,7 @@ prompt_command() {
         fi
     fi
 }
-export PS1='\[$(tput sc; tput hpa $(($COLUMNS - 5)))\]\A\[$(tput rc)\]\w${__PS1_GITINFO}\n\[${__PS1_COLOUR}\]>\[${GRUV_RESET}\] '
+export PS1='\[$(tput sc; tput hpa $(($COLUMNS - 5)))\]\A\[$(tput rc)\]\w${__PS1_GITINFO}\n\[${__PS1_COLOUR}\]$>\[${GRUV_RESET}\] '
 export PS2="... "
 
 clear() { __PS1_FIRST_PROMPT=1; command clear "$@"; }
