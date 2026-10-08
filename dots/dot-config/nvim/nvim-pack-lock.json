@@ -12,6 +12,10 @@
       "rev": "154eb5ff5b96d0641307113fa385eaf0d36d9796",
       "src": "https://github.com/ellisonleao/gruvbox.nvim"
     },
+    "guile.vim": {
+      "rev": "f76959a9dbdc69cde018901de82ac5a3d443843c",
+      "src": "https://gitlab.com/HiPhish/guile.vim"
+    },
     "lualine.nvim": {
       "rev": "221ce6b2d999187044529f49da6554a92f740a96",
       "src": "https://github.com/nvim-lualine/lualine.nvim"
