@@ -54,7 +54,7 @@ input {
 // https://yalter.github.io/niri/Configuration:-Outputs
 //
 
-// prefer dark mode everywhere
+// prefer dark mode everywhere - requires adwaita-dark to be available
 spawn-sh-at-startup "dconf write /org/gnome/desktop/interface/color-scheme '\"prefer-dark\"'"
 spawn-sh-at-startup "dconf write /org/gnome/desktop/interface/gtk-theme '\"Adwaita-dark\"'"
 
