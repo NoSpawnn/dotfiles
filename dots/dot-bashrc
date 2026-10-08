@@ -69,7 +69,20 @@ prompt_command() {
     fi
     __PS1_FIRST_PROMPT=0
 
+    if [[ -n "$TMUX" ]]; then
+        effective_shlvl=$((SHLVL - 1))
+    else
+        effective_shlvl=$SHLVL
+    fi
+
+    if [[ $effective_shlvl -ge 2 ]]; then
+        __PS1_NESTED_SHELL="(nested $effective_shlvl) "
+    else
+        __PS1_NESTED_SHELL=""
+    fi
+
     # git stuff
+    # TODO: handle detached state
     __PS1_GITINFO=""
     if git status >/dev/null 2>&1; then
         local branch=$(git branch --show-current 2>/dev/null)
@@ -79,7 +92,7 @@ prompt_command() {
         fi
     fi
 }
-export PS1='\[$(tput sc; tput hpa $(($COLUMNS - 5)))\]\A\[$(tput rc)\]\w${__PS1_GITINFO}\n\[${__PS1_COLOUR}\]$>\[${GRUV_RESET}\] '
+export PS1='\[$(tput sc; tput hpa $(($COLUMNS - 5)))\]\A\[$(tput rc)\]\w${__PS1_GITINFO}\n${__PS1_NESTED_SHELL}\[${__PS1_COLOUR}\]$>\[${GRUV_RESET}\] '
 export PS2="... "
 
 clear() { __PS1_FIRST_PROMPT=1; command clear "$@"; }
