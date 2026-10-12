@@ -17,6 +17,7 @@ if [ -f /etc/bashrc ]; then source /etc/bashrc; fi
 export HISTCONTROL=ignoreboth:erasedups
 
 PATH="$PATH:$HOME/.local/bin"
+[ -d "$HOME/.nix-profile/bin" ] && PATH="$PATH:$HOME/.nix-profile/bin"
 export PATH
 
 if [ -z "$SSH_CONNECTION" ]; then
