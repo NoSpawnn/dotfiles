@@ -46,8 +46,15 @@ vim.keymap.set("n", "<ESC>", "<CMD>nohlsearch | let @/ = ''<CR>", { silent = tru
 vim.keymap.set("n", "<leader>co", "<CMD>:copen<CR>")
 vim.keymap.set("n", "<leader>cc", "<CMD>:cclose<CR>")
 
--- buffer keybinds
-vim.keymap.set("n", "<leader>bd", ":bdelete<CR>")
+-- buffer-related keybinds
+vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]])
+vim.keymap.set("n", "<leader>bd", function()
+    if vim.bo.buftype == "terminal" then
+        vim.cmd("bdelete!")
+    else
+        vim.cmd("bdelete")
+    end
+end, { desc = "Delete buffer" })
 vim.keymap.set("n", "<leader>bn", ":bnext<CR>")
 vim.keymap.set("n", "<leader>bp", ":bprev<CR>")
 
