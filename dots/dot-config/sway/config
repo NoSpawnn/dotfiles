@@ -22,13 +22,13 @@ output 'California Institute of Technology 0x130F Unknown' {
 ### Input configuration
 
 input type:touchpad {
-	natural_scroll enabled
+    natural_scroll enabled
 }
 
 input type:keyboard {
-	repeat_rate 35
-	repeat_delay 200
-	xkb_options caps:swapescape
+    repeat_rate 35
+    repeat_delay 200
+    xkb_options caps:swapescape
 }
 
 ### Key bindings
@@ -83,6 +83,7 @@ input type:keyboard {
     bindsym $mod+Shift+Down move down
     bindsym $mod+Shift+Up move up
     bindsym $mod+Shift+Right move right
+
 #
 # Workspaces:
 #
@@ -110,6 +111,7 @@ input type:keyboard {
     bindsym $mod+Shift+0 move container to workspace number 10
     # Note: workspaces can have any name you want, not just numbers.
     # We just use 1-10 as the default.
+
 #
 # Layout stuff:
 #
@@ -135,6 +137,7 @@ input type:keyboard {
 
     # Move focus to the parent container
     bindsym $mod+a focus parent
+
 #
 # Scratchpad:
 #
@@ -147,9 +150,11 @@ input type:keyboard {
     # Show the next scratchpad window or hide the focused scratchpad window.
     # If there are multiple scratchpad windows, this command cycles through them.
     bindsym $mod+minus scratchpad show
+
 #
 # Resizing containers:
 #
+bindsym $mod+r mode "resize"
 mode "resize" {
     # left will shrink the containers width
     # right will grow the containers width
@@ -170,7 +175,7 @@ mode "resize" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-bindsym $mod+r mode "resize"
+
 #
 # Utilities:
 #
@@ -198,6 +203,7 @@ bar {
     position bottom
 
     status_command while ~/.config/sway/scripts/status.sh; do sleep 1; done
+    tray_output *
 
     font 0xProto Nerd Font 14
     colors {
