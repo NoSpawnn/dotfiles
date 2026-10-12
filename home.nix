@@ -2,18 +2,21 @@
 
 {
   home.packages = with pkgs; [
-    devenv
+    bitwarden-desktop
     bluetui
-    neovim
-    lazygit
+    devenv
     eza
+    fuzzel
     fzf
-    ripgrep
     git
+    lazygit
+    neovim
+    ripgrep
+    zoxide
   ];
 
-  programs.home-manager.enable = true;
   home.username = "n";
   home.homeDirectory = "/home/n";
   home.stateVersion = "26.05";
+  programs.home-manager.enable = true;
 }
