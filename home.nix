@@ -6,12 +6,14 @@
     bluetui
     devenv
     eza
+    fastfetch
     fuzzel
     fzf
     git
     lazygit
     neovim
     ripgrep
+    tmux
     zoxide
   ];
 
