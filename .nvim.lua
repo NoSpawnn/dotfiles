@@ -1,5 +1,3 @@
-local vim = vim
-
 -- to get this to work the first time:
 --      1. touch dots/dot-config/quickshell/.qmlls.ini
 --      2. run quickshell (`qs` script from devenv), which populates the above file
@@ -14,6 +12,16 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end,
 })
 
+vim.lsp.config("lua_ls", {
+    settings = {
+        Lua = {
+            runtime = { version = "LuaJIT", },
+            diagnostics = { globals = { "vim" }, },
+            workspace = { library = vim.api.nvim_get_runtime_file("", true), },
+            telemetry = { enable = false, },
+        },
+    }
+})
 vim.lsp.enable("lua_ls")
 
 require("conform").setup({
