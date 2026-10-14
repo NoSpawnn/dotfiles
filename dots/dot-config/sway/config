@@ -16,7 +16,6 @@
     }
 
     include /etc/sway/config-vars.d/*
-
 #
 # Output configuration
 #
@@ -32,7 +31,6 @@
     # xd90
     output 'California Institute of Technology 0x130F Unknown' {
     }
-
 #
 # Input configuration
 #
@@ -59,7 +57,6 @@
     input 1:1:AT_Translated_Set_2_keyboard {
         xkb_layout "gb"
     }
-
 #
 # Key bindings
 #
@@ -123,7 +120,6 @@
         $mod+Shift+9 move container to workspace number 9
         $mod+Shift+0 move container to workspace number 10
     }
-
 #
 # Layout stuff:
 #
@@ -151,15 +147,20 @@
         # Move focus to the parent container
         $mod+a focus parent
     }
-
 #
 # Window rules:
 #
     for_window {
         [shell="xwayland"] title_format "%title [XWayland]"
-        [app_id=".*bitwarden.*"] floating enable; move position center; resize set width 75ppt height 90ppt;
-    }
 
+        [window_role="pop-up"] floating enable
+        [window_role="bubble"] floating enable
+        [window_role="dialog"] floating enable
+        [window_type="dialog"] floating enable
+
+        [app_id=".*bitwarden.*"]     floating enable move position center; resize set width 75ppt height 90ppt;
+        [title="Picture-in-Picture"] floating enable move position center; resize set width 75ppt height 75ppt;
+    }
 #
 # Scratchpad:
 #
@@ -173,7 +174,6 @@
         # If there are multiple scratchpad windows, this command cycles through them.
         $mod+minus scratchpad show
     }
-
 #
 # Resizing containers:
 #
@@ -198,7 +198,6 @@
             Escape mode "default"
         }
     }
-
 #
 # Utilities:
 #
@@ -217,7 +216,6 @@
     }
 
     bindsym Print exec --no-startup-id slurp | grim -g - | wl-copy
-
 #
 # Status Bar:
 #
