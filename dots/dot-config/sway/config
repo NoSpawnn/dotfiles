@@ -30,6 +30,7 @@
 
     # xd90
     output 'California Institute of Technology 0x130F Unknown' {
+        scale 1.5
     }
 #
 # Input configuration
@@ -46,16 +47,17 @@
     input type:keyboard {
         repeat_rate 35
         repeat_delay 200
+        xkb_layout "gb"
         xkb_options caps:swapescape
     }
 
     input 5824:10203:Go60_Keyboard {
         xkb_options ""
+        xkb_layout "us"
     }
 
     # xd90 keyboard
     input 1:1:AT_Translated_Set_2_keyboard {
-        xkb_layout "gb"
     }
 #
 # Key bindings
@@ -87,14 +89,14 @@
 
     # Container movement
     bindsym {
-        $mod+Shift+$left move left
-        $mod+Shift+$down move down
-        $mod+Shift+$up move up
+        $mod+Shift+$left  move left
+        $mod+Shift+$down  move down
+        $mod+Shift+$up    move up
         $mod+Shift+$right move right
-        $mod+Shift+Left move left
-        $mod+Shift+Down move down
-        $mod+Shift+Up move up
-        $mod+Shift+Right move right
+        $mod+Shift+Left   move left
+        $mod+Shift+Down   move down
+        $mod+Shift+Up     move up
+        $mod+Shift+Right  move right
     }
 
     # Workspace stuff
@@ -177,6 +179,7 @@
 #
 # Resizing containers:
 #
+    set $resize_step 10px
     bindsym $mod+r mode "resize"
     mode "resize" {
         # left will shrink the containers width
@@ -184,15 +187,15 @@
         # up will shrink the containers height
         # down will grow the containers height
         bindsym {
-            $left  resize shrink width  10px
-            $down  resize grow   height 10px
-            $up    resize shrink height 10px
-            $right resize grow   width  10px
+            $up    resize shrink height $resize_step
+            $down  resize grow   height $resize_step
+            $left  resize shrink width  $resize_step
+            $right resize grow   width  $resize_step
 
-            Left resize shrink width 10px
-            Down resize grow height 10px
-            Up resize shrink height 10px
-            Right resize grow width 10px
+            Up    resize shrink height $resize_step
+            Down  resize grow   height $resize_step
+            Left  resize shrink width  $resize_step
+            Right resize grow   width  $resize_step
 
             Return mode "default"
             Escape mode "default"
