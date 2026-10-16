@@ -11,3 +11,8 @@ XDG_DATA_DIRS="/usr/share:$XDG_DATA_DIRS"
 
 export PATH
 export XDG_DATA_DIRS
+
+if [ -n "$BASH_VERSION" ]; then
+    [ -f "$HOME/.bashrc" ] && source "$HOME/.bashrc"
+fi
+

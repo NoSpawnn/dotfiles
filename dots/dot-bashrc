@@ -17,8 +17,6 @@ _flatpak_installed() {
 
 ###
 
-[ -f ~/.bash_profile ] && source ~/.bash_profile
-
 export HISTCONTROL=ignoreboth:erasedups
 
 if [ -z "$SSH_CONNECTION" ]; then
@@ -94,7 +92,7 @@ prompt_command() {
 		fi
 	fi
 }
-export PS1='\[$(tput sc; tput hpa $(($COLUMNS - 5)))\]\A\[$(tput rc)\]\w${__PS1_GITINFO}\n${__PS1_NESTED_SHELL}\[${__PS1_COLOUR}\]$>\[${GRUV_RESET}\] '
+export PS1='\w${__PS1_GITINFO}\n${__PS1_NESTED_SHELL}\[${__PS1_COLOUR}\]$>\[${GRUV_RESET}\] '
 export PS2="... "
 
 clear() {
