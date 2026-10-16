@@ -13,6 +13,7 @@
     lazygit
     neovim
     ripgrep
+    tealdeer
     tmux
     zoxide
   ];
