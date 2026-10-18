@@ -11,6 +11,7 @@
     fzf
     git
     lazygit
+    lua-language-server
     neovim
     ripgrep
     tealdeer
