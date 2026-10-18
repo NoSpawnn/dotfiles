@@ -57,6 +57,7 @@ vim.keymap.set("n", "<leader>bd", function()
 end, { desc = "Delete buffer" })
 vim.keymap.set("n", "<leader>bn", ":bnext<CR>")
 vim.keymap.set("n", "<leader>bp", ":bprev<CR>")
+vim.keymap.set("n", "<leader>cd", ":cd %:p:h<CR>", { desc = "Set CWD to current buffer" })
 
 -- don't yank with x
 vim.keymap.set("n", "x", '"_x')
