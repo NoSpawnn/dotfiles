@@ -16,6 +16,7 @@
     ripgrep
     tealdeer
     tmux
+    quickemu
     zoxide
   ];
 
