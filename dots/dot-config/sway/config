@@ -2,17 +2,18 @@
 # Variables
 #
     set {
-        # Logo key. Use Mod1 for Alt.
+        # Mod4 = Logo key, Mod1 = Alt
         $mod Mod4
 
-        $left h
-        $down j
-        $up k
+        $left  h
+        $down  j
+        $up    k
         $right l
 
-        $term foot
-        $runner fuzzel
-        $lock swaylock --color 000000
+        $term         foot
+        $runner       fuzzel
+        $lock         swaylock --color 000000
+        $file_manager thunar
     }
 
     include /etc/sway/config-vars.d/*
@@ -73,6 +74,7 @@
         $mod+Shift+c reload
 
         $mod+Return  exec $term
+        $mod+o       exec $file_manager
         $mod+d       exec $runner
         $mod+Escape  exec $lock
         $mod+Shift+e exec swaynag -t warning -m 'Really exit?' -B 'Yes, exit sway' 'swaymsg exit'
@@ -155,29 +157,26 @@
 #
 # Window rules:
 #
+    set {
+        $center       move position center
+        $float        floating enable
+        $float_center $float; $center; resize set width 75ppt height 90ppt;
+    }
+
     for_window {
+        [window_role="^(pop-up|bubble|dialog)$"] $float
+
+        [app_id="bitwarden"] $float_center
+        [title="Picture-in-Picture"] $float_center
+
         [shell="xwayland"] title_format "%title [XWayland]"
-
-        [window_role="pop-up"] floating enable
-        [window_role="bubble"] floating enable
-        [window_role="dialog"] floating enable
-        [window_type="dialog"] floating enable
-
-        [app_id=".*bitwarden.*"]     floating enable move position center; resize set width 75ppt height 90ppt;
-        [title="Picture-in-Picture"] floating enable move position center; resize set width 75ppt height 75ppt;
     }
 #
 # Scratchpad:
 #
-    # Sway has a "scratchpad", which is a bag of holding for windows.
-    # You can send windows there and get them back later.
     bindsym {
-        # Move the currently focused window to the scratchpad
         $mod+Shift+minus move scratchpad
-
-        # Show the next scratchpad window or hide the focused scratchpad window.
-        # If there are multiple scratchpad windows, this command cycles through them.
-        $mod+minus scratchpad show
+        $mod+minus       scratchpad show
     }
 #
 # Resizing containers:
