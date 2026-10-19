@@ -3,12 +3,20 @@ vim.pack.add({
 })
 
 vim.diagnostic.config({ virtual_text = true })
-vim.opt.completeopt:append("fuzzy,menuone,noselect,popup")
+vim.opt.completeopt = "fuzzy,menuone,noselect,popup"
 
 vim.api.nvim_create_autocmd("LspAttach", {
     group = vim.api.nvim_create_augroup("my.lsp", {}),
     callback = function(ev)
         local client = assert(vim.lsp.get_client_by_id(ev.data.client_id))
+
+        local status, blink_cmp = pcall(require, "blink.cmp")
+        if status then client.capabilities = blink_cmp.get_lsp_capabilities(client.capabilities) end
+
+        vim.keymap.set("n", "<leader>q", function()
+            vim.diagnostic.setqflist()
+            vim.cmd([[ copen ]])
+        end)
 
         if client:supports_method("textDocument/implementation") then
             vim.keymap.set("n", "<leader>lr", vim.lsp.buf.rename)
@@ -22,7 +30,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
             end)
         end
 
-        if client:supports_method("textDocument/completion") then
+        if not blink_cmp and client:supports_method("textDocument/completion") then
             local chars = {}
             for i = 32, 126 do table.insert(chars, string.char(i)) end
             client.server_capabilities.completionProvider.triggerCharacters = chars
@@ -35,10 +43,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
 vim.lsp.config("lua_ls", {
     settings = {
         Lua = {
-            runtime = { version = "LuaJIT", },
-            diagnostics = { globals = { "vim" }, },
-            workspace = { library = vim.api.nvim_get_runtime_file("", true), },
-            telemetry = { enable = false, },
+            runtime = { version = "LuaJIT" },
+            diagnostics = { globals = { "vim" } },
+            workspace = { library = vim.api.nvim_get_runtime_file("", true) },
+            telemetry = { enable = false },
         },
     }
 })
