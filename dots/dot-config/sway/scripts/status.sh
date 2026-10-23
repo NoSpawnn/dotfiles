@@ -6,10 +6,10 @@ if [[ -r "$BAT/status" && -r "$BAT/capacity" ]]; then
     capacity=$(<"$BAT/capacity")
     status=$(<"$BAT/status")
     case "$status" in
-        Discharging) battery_status="BAT: ${capacity}%" ;;
-        Charging)    battery_status="BAT: ${capacity}% (CHRG)" ;;
-        Full)        battery_status="BAT: ${capacity}% (full)" ;;
-        *)           battery_status="BAT: ${capacity}% ($status)" ;;
+        Discharging) battery_status=" BAT: ${capacity}%" ;;
+        Charging)    battery_status=" BAT: ${capacity}% (CHRG)" ;;
+        Full)        battery_status=" BAT: ${capacity}% (full)" ;;
+        *)           battery_status=" BAT: ${capacity}% ($status)" ;;
     esac
     battery_status+=" |"
 else
@@ -24,4 +24,4 @@ else
 fi
 
 # result
-echo "$network_status $battery_status $(date '+%d/%m/%Y %H:%M:%S')"
+echo "$network_status$battery_status $(date '+%d/%m/%Y %H:%M:%S')"
