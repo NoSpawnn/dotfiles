@@ -31,14 +31,12 @@
             swaymsg \"output * power off\"'        \
             resume 'swaymsg \"output * power on\"' \
             before-sleep 'swaylock -f -c 000000'"
-
     #
     # xd90
     #
         output 'California Institute of Technology 0x130F Unknown' {
             scale 1.5
         }
-
     #
     # spawnpoint
     #
@@ -52,6 +50,13 @@
             mode 2880x1800@120Hz
             position 580 -900
         }
+    #
+    # Theming
+    #
+        # prefer dark mode everywhere - requires adwaita-dark to be available
+        # TODO: auto light/dark mode should be trivial for a lot of apps with this...
+        exec_always dconf write /org/gnome/desktop/interface/color-scheme "'prefer-dark'"
+        exec_always dconf write /org/gnome/desktop/interface/gtk-theme "'Adwaita-dark'"
 #
 # Input configuration
 #
@@ -72,12 +77,14 @@
     }
 
     input 5824:10203:Go60_Keyboard {
+        # not on a split lol
         xkb_options ""
         xkb_layout "us"
     }
 
-    # xd90 keyboard
-    input 1:1:AT_Translated_Set_2_keyboard {
+    # RK96
+    input 9610:164:SINO_WEALTH_Gaming_KB {
+        xkb_layout "us"
     }
 #
 # Key bindings
