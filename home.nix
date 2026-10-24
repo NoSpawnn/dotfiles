@@ -20,6 +20,14 @@
     zoxide
   ];
 
+  services.flatpak = {
+      enable = true;
+      packages = [
+        #"com.valvesoftware.Steam" # need to figure out deps for this
+        "dev.vencord.Vesktop"
+      ];
+  };
+
   home.username = "n";
   home.homeDirectory = "/home/n";
   home.stateVersion = "26.05";
