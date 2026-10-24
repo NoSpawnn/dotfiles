@@ -183,14 +183,20 @@
     set {
         $center       move position center
         $float        floating enable
-        $float_center $float; $center; resize set width 75ppt height 90ppt;
+        $float_center $float; $center; resize set width 75ppt height 90ppt
     }
 
     for_window {
         [window_role="^(pop-up|bubble|dialog)$"] $float
 
+        [title="(?:Open|Save) (?:File|Folder|As)"] $float_center
+        [title="Picture-in-Picture"] $float_center; sticky enable; inhibit_idle open
+        [app_id="org.pulseaudio.pavucontrol"] $float_center
         [app_id="bitwarden"] $float_center
-        [title="Picture-in-Picture"] $float_center
+
+        [class="^steam" title="^notificationtoasts"] floating enable; move position 100%-w-10 100%-h-10
+        [class="steam_app.*"] inhibit_idle focus; border none
+        [instance="steam_app.*"] inhibit_idle focus; border none
 
         [shell="xwayland"] title_format "%title [XWayland]"
     }
