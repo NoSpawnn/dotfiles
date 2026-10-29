@@ -9,6 +9,8 @@ XDG_DATA_DIRS="/usr/share:$XDG_DATA_DIRS"
 
 [ -f "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh" ] && source "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
 
+[ -d "$HOME/.local/share/icons" ] && XCURSOR_PATH="$HOME/.local/share/icons:$XCURSOR_PATH"
+
 export PATH
 export XDG_DATA_DIRS
 
