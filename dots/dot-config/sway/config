@@ -20,10 +20,7 @@
 #
 # Output configuration
 #
-    seat * {
-        xcursor_theme Twilight-cursors 26
-        hide_cursor when-typing enable
-    }
+    seat * xcursor_theme Twilight-cursors 26
 
     exec "swayidle                                 \
             -w timeout 300                         \
@@ -41,6 +38,7 @@
     # spawnpoint
     #
         output 'Dell Inc. DELL S2721DGF C626R83' {
+            background ~/.local/share/wallpapers/lesbian.png fill
             mode 2560x1440@165Hz
             # put at 0,0 as a reference for the other monitors
             position 0 0
@@ -93,13 +91,14 @@
 
     # Misc
     bindsym {
-        $mod+Shift+q kill
         $mod+Shift+c reload
 
+        $mod+q       kill
         $mod+Return  exec $term
         $mod+o       exec $file_manager
         $mod+d       exec $runner
         $mod+Escape  exec $lock
+        # TODO: swap out swaynag for something
         $mod+Shift+e exec swaynag -t warning -m 'Really exit?' -B 'Yes, exit sway' 'swaymsg exit'
     }
 
@@ -190,13 +189,16 @@
         [window_role="^(pop-up|bubble|dialog)$"] $float
 
         [title="(?:Open|Save) (?:File|Folder|As)"] $float_center
-        [title="Picture-in-Picture"] $float_center; sticky enable; inhibit_idle open
+        [title="Picture-in-Picture"] $float_center; sticky enable; inhibit_idle open; resize set width 30ppt height 30ppt
         [app_id="org.pulseaudio.pavucontrol"] $float_center
         [app_id="bitwarden"] $float_center
 
-        [class="^steam" title="^notificationtoasts"] floating enable; move position 100%-w-10 100%-h-10
+        # dont know if this one actually works...
+        [class="steam" title="notificationtoasts"] floating enable; move position 100%-w-10 100%-h-10
+        [class="steam"] floating enable;
         [class="steam_app.*"] inhibit_idle focus; border none
         [instance="steam_app.*"] inhibit_idle focus; border none
+        [class="steam_app.*"] move scratchpad
 
         [shell="xwayland"] title_format "%title [XWayland]"
     }
@@ -206,6 +208,9 @@
     bindsym {
         $mod+Shift+minus move scratchpad
         $mod+minus       scratchpad show
+
+        # this does technically mean i can only nicely play 1 game at a time, oh no
+        $mod+g [class="steam_app.*"] scratchpad show
     }
 #
 # Resizing containers:
