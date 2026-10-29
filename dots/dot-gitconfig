@@ -1,5 +1,29 @@
 [user]
-	name = Red
-	email = me@nospawnn.com
+    name = Red
+    email = me@nospawnn.com
 [core]
-	editor = nvim
+    editor = nvim
+[merge]
+    conflictstyle = zdiff3
+[rebase]
+    autosquash = true
+[help]
+    autocorrect = prompt
+[diff]
+    algorithm = histogram
+    submodule = log
+    colorMoved = default
+[url "https://github.com/NoSpawnn"]
+    insteadOf = me
+[submodule]
+    recurse = true
+[status]
+    submoduleSummary = true
+[init]
+    defaultBranch = main
+[pull]
+    rebase = true
+[push]
+    autoSetupRemote = true
+[branch]
+    sort = -committerdate
