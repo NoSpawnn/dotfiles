@@ -22,10 +22,17 @@
 
   services.flatpak = {
       enable = true;
+
       packages = [
         #"com.valvesoftware.Steam" # need to figure out deps for this
         "dev.vencord.Vesktop"
+        "com.orcaslicer.OrcaSlicer"
       ];
+
+      overrides.settings = {
+          # https://github.com/OrcaSlicer/OrcaSlicer/issues/15920 - should be fixed in prod soon
+          "com.orcaslicer.OrcaSlicer".Context.sockets = [ "!wayland" "x11" ];
+      };
   };
 
   home.username = "n";
