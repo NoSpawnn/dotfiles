@@ -29,6 +29,7 @@
 
       packages = [
         #"com.valvesoftware.Steam" # need to figure out deps for this
+        "org.signal.Signal"
         "dev.vencord.Vesktop"
         "com.orcaslicer.OrcaSlicer"
       ];
