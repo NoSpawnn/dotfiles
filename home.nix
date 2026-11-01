@@ -1,6 +1,9 @@
 { config, pkgs, ... }:
 
 {
+  targets.genericLinux.enable = true;
+  targets.genericLinux.gpu.enable = true;
+
   home.packages = with pkgs; [
     bitwarden-desktop
     bluetui
@@ -18,6 +21,7 @@
     tmux
     quickemu
     zoxide
+    xwayland-satellite
   ];
 
   services.flatpak = {
